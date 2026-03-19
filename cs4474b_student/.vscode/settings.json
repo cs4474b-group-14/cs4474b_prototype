@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "cs4474_student.sln"
+    "dotnet.defaultSolution": "cs4474b_student.sln"
 }
