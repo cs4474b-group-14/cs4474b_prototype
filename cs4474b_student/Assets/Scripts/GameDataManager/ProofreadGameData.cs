@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class ProofreadData : MonoBehaviour
+public class ProofreadData
 {
     public string answerText;
     public int errorCount;
