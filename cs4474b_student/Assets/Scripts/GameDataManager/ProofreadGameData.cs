@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class ProofreadData
 {
-    public string answerText;
+    public string answerText; 
     public int errorCount;
 
     public ProofreadData(string answerText, int errorCount)
