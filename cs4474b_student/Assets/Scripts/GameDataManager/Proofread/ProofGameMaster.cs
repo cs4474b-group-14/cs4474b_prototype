@@ -2,24 +2,90 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProofGameMaster : MonoBehaviour
 {
-    public string answerText;
-    public int errorCount;
-    public string paragraph;
+    // DEBUG
     public string output_lol = "";
 
-    public override string ToString()
+    // PROVIDED
+    public string provided_text; // given provided_text
+    public string correct_text; // correct provided_text
+    public List<string> given_words;
+    public List<string> correct_words;
+    public List<string> current_words; // for save purposes
+
+    // MARKING
+    public List<int> identified_and_correct; //identified + corrected spelling mistakes
+    public List<int> identified_but_incorrect; //identified but not corrected spelling mistakes
+    public List<int> misidentified; // misidentified spelling mistakes
+    public List<int> failed_to_indentify; // list of incorrectly spelled words in the provided text
+
+    //UTILITY
+    public GameObject WORD_PREFAB;
+    public static event Action GetData;
+    public GridLayoutGroup board;
+
+    public void RequestData()
     {
-        return $"Text: {answerText}; " +
-            $"Errors: {errorCount}";
+        GetData.Invoke();   
     }
 
-    List<string> GetWords(String paragraph)
+    public void RecieveData(int index, string current_spelling)
+    {
+        current_words[index] = current_spelling;
+    }
+
+    public void CalcResults(int index)
+    {
+        string current_spelling = current_words[index];
+        string initial_spelling = given_words[index];
+        string correct_spelling = correct_words[index];
+
+        if(current_spelling != initial_spelling)
+        {   // spelling changed
+            if(current_spelling == correct_spelling)
+            {   // spelling corrected
+                identified_and_correct.Add(index);
+            }
+            else
+            {   // spelling changed incorrectly
+                if(initial_spelling == correct_spelling)
+                {   // student inccorectly identified a word as having a spelling mistake
+                    misidentified.Add(index);
+                }
+                else
+                {   // student correctly identified a spelling mistake, but failed to correct it
+                    identified_but_incorrect.Add(index);
+                }
+            }
+        }
+        else
+        {   // spelling unchanged
+            if(current_spelling != correct_spelling)
+            {   // student failed to notice a spelling mistake in the provided provided_text
+                failed_to_indentify.Add(index);
+            }
+            else
+            {   // student recognized that the word was already spelt correctly
+                
+            }
+        }
+    }
+
+    public string PrintResults()
+    {
+        string results = "";
+        // write out results
+        
+        return results;
+    }
+
+    List<string> GetWords(String provided_text)
     {
         List<string> words = new List<string>(); //this will include newline characters as their own entries
-        List<string> sentences = paragraph.Split('\n').ToList();
+        List<string> sentences = provided_text.Split('\n').ToList();
         foreach(string sentence in sentences)
         {
             List<string> contents = sentence.Split(' ').ToList();
@@ -44,17 +110,54 @@ public class ProofGameMaster : MonoBehaviour
 
     public void Start()
     {
-        //start of testing
-        paragraph  = "hello, thes is an exemple paragraph\n etc.";
-        answerText = "hello, this is an example paragraph\n etc.";
-        //end of testing 
+        Setup(); // first time setup
+    } 
 
-        List<string> given_words = GetWords(paragraph);
+    public void Setup()
+    {
+        //REMOVE LATER
+        provided_text  = "hello, thes is an exemple provided_text\n etc.";
+        correct_text = "hello, this is an example provided_text\n etc.";
+        //END OF REMOVE LATER
+
+        given_words = GetWords(provided_text);
+        correct_words = GetWords(correct_text);
+        // DEBUG
         PrintWords("given words", given_words);
-
-        List<string> correct_words = GetWords(answerText);
         PrintWords("correct words", correct_words);
 
+        // Create all word objects
+        for(int i = 0; i < given_words.Count; i++)
+        {
+            if(given_words[i].Length < 2)
+            {   //end of line segment
+                continue;
+            }
+            
+            //check if there is punctuation
+            int lastIndex = given_words[i].Length - 1;
+            char lastChar = given_words[i][lastIndex];
+            if((lastChar == ',') || (lastChar == '.'))
+            {   //punctuation should match
+                given_words[i].Remove(lastIndex);
+                correct_words[i].Remove(lastIndex);
+                
+            }
 
+            GameObject word = Instantiate(WORD_PREFAB);
+            ProofWord word_script = word.GetComponent<ProofWord>();
+            word_script.Setup(given_words[i], given_words[i]);
+            word.transform.SetParent(board.transform);
+
+            // add punctuation after word if applicable
+            if(lastChar == ',')
+                {   // add comma after word
+                    
+                }
+            else if (lastChar == '.') 
+                {   // add period after word
+
+                }
+        }
     }
 }
