@@ -60,9 +60,10 @@ public class TaskItem : MonoBehaviour
         }
     }
 
-    public void set_game_type(GameType gt)
+    public void set_game_type(GameType gt, int index)
     {
         gameType = gt;
+        taskIndex = index;
         OnValidate();
     }
 
