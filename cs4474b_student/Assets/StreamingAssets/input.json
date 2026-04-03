@@ -1,0 +1,56 @@
+{
+  "proofreadGames": [
+    {
+      "answerText": "Test number 1",
+      "errorCount": 0
+    },
+    {
+      "answerText": "Test number 2",
+      "errorCount": 34
+    },
+    {
+      "answerText": "The quick brown fox jumps over the lazy dog.",
+      "errorCount": 7
+    }
+  ],
+  "transcriptionGames": [
+    {
+      "word": "hello",
+      "audioData": "data:audio/ogg;codecs=opus;base64,T2dnUwACAAAAAAAAAA..."
+    }
+  ],
+  "homophoneGames": [
+    {
+      "words": [
+        "there",
+        "they're",
+        "their"
+      ]
+    },
+    {
+      "words": [
+        "reed",
+        "read"
+      ]
+    },
+    {
+      "words": [
+        "moon",
+        "moan",
+        "man"
+      ]
+    },
+    {
+      "words": [
+        "bear",
+        "bare",
+        "bair"
+      ]
+    }
+  ],
+  "prioritizedWords": [
+    "apple",
+    "banana",
+    "wallaby"
+  ]
+}
