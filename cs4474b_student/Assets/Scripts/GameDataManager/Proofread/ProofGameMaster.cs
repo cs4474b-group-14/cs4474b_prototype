@@ -25,7 +25,7 @@ public class ProofGameMaster : MonoBehaviour
     //UTILITY
     public GameObject WORD_PREFAB;
     public static event Action GetData;
-    public GridLayoutGroup board;
+    public HorizontalLayoutGroup board;
 
     public void RequestData()
     {
@@ -93,11 +93,12 @@ public class ProofGameMaster : MonoBehaviour
             {
                 words.Add(word);
             } 
-            words.Add("\n");
+            //words.Add("\n"); // REMOVED: assume no newlines for now
         }
         return words;
     }
 
+    //DEBUG FUNCTION
     public void PrintWords(string name, List<string> words)
     {
         output_lol += name + ": \n";
@@ -115,7 +116,7 @@ public class ProofGameMaster : MonoBehaviour
 
     public void Setup()
     {
-        //REMOVE LATER
+        //OVERRIDES INPUT REMOVE LATER
         provided_text  = "hello, thes is an exemple provided_text\n etc.";
         correct_text = "hello, this is an example provided_text\n etc.";
         //END OF REMOVE LATER
@@ -129,8 +130,9 @@ public class ProofGameMaster : MonoBehaviour
         // Create all word objects
         for(int i = 0; i < given_words.Count; i++)
         {
-            if(given_words[i].Length < 2)
-            {   //end of line segment
+            //should not be triggered, print if it is
+            if (given_words[i] == "\n" || given_words[i].Length < 1)
+            {   //end of line segment, ignore
                 continue;
             }
             
