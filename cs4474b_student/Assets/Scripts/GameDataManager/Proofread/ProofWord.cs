@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ProofWord : MonoBehaviour
 {
     private ProofGameMaster GAME_MASTER;
-    public static int MY_INDEX;
+    public int MY_INDEX; // was static int
     public Button button;
     public TMP_Text button_text;
     public TMP_InputField input_field;
@@ -13,16 +13,27 @@ public class ProofWord : MonoBehaviour
     public string current_spelling; //initialized to initial_spelling, may be changed by student
     public float char_size; // size of each character in the word, assumes monospacing
 
+    void Awake()
+    {
+        ProofGameMaster.GetData += GiveData;
+    }
+
+    void OnDestroy()
+    {
+        ProofGameMaster.GetData -= GiveData;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        GAME_MASTER = GetComponentInParent<ProofGameMaster>();
-        ProofGameMaster.GetData += GiveData;
-
         //Setup("initial", "current");
     }
-    public void Setup(string init_spelling, string curr_spelling)
+
+    public void Setup(string init_spelling, string curr_spelling, ProofGameMaster master, int index)
     {
+        GAME_MASTER = master;
+        MY_INDEX = index;
+
         initial_spelling = init_spelling;
         current_spelling = curr_spelling;
 
@@ -78,11 +89,10 @@ public class ProofWord : MonoBehaviour
 
     void Dynamic_Resize()
     {
-        RectTransform bounds1 = button.GetComponent<RectTransform>();
-        RectTransform bounds2 = input_field.GetComponent<RectTransform>();
-        int num_char = current_spelling.Length;
-        float height = bounds1.rect.height;
-        bounds1.sizeDelta = new Vector2(20*num_char, height);
-        bounds2.sizeDelta = bounds1.sizeDelta;
+        float preferredWidth = button_text.preferredWidth + 10f; // +10 for a little padding
+        float height = button.GetComponent<RectTransform>().rect.height;
+
+        button.GetComponent<RectTransform>().sizeDelta = new Vector2(preferredWidth, height);
+        input_field.GetComponent<RectTransform>().sizeDelta = new Vector2(preferredWidth, height);
     }
 }

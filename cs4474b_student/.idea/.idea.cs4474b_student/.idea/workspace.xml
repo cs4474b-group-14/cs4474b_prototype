@@ -11,32 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33396aad-077f-4bec-93b9-4d9cd431abfe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Proofread.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Proofread.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.cs4474b_student/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.cs4474b_student/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.cs4474b_student/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Transcribe.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Transcribe.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dashboard/TaskItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dashboard/TaskItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DraggableWord.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DraggableWord.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DropZone.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DropZone.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/ProofGameMaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/ProofGameMaster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/ProofWord.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/ProofWord.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HomophoneQuestion.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HomophoneQuestion.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/JSONLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/JSONLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SentenceDictionary.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SentenceDictionary.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/cursorManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/cursorManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Renderer2D.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Renderer2D.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/input.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/input.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +101,8 @@
       <updated>1775261553851</updated>
       <workItem from="1775261558637" duration="4524000" />
       <workItem from="1775327668295" duration="2000" />
-      <workItem from="1775327861885" duration="10368000" />
+      <workItem from="1775327861885" duration="10986000" />
+      <workItem from="1775410732542" duration="191000" />
     </task>
     <servers />
   </component>

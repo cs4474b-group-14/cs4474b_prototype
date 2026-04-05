@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -102,8 +103,13 @@ public class UIManager : MonoBehaviour
             finalScoreText.text = $"You scored {_score} points!";
     }
     
-    public void GoToMainMenu()
+    public void mainMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
+    }
+    
+    public void tryAgain()
+    {
+        SceneManager.LoadScene("homophonesScene");
     }
 }

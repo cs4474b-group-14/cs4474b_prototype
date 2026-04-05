@@ -36,26 +36,39 @@ public class JSONLoader : MonoBehaviour
 {
     [SerializeField] private string jsonFileName = "input.json";
 
-    public List<HomophoneQuestion> LoadHomophoneQuestions()
+    private GameInputData _cachedData;
+
+    private GameInputData LoadData()
     {
+        if (_cachedData != null) return _cachedData;
+
         string path = Path.Combine(Application.streamingAssetsPath, jsonFileName);
 
         if (!File.Exists(path))
         {
             Debug.LogError($"input.json not found at: {path}");
-            return new List<HomophoneQuestion>();
+            return null;
         }
 
         string json = File.ReadAllText(path);
-        GameInputData data = JsonUtility.FromJson<GameInputData>(json);
+        _cachedData = JsonUtility.FromJson<GameInputData>(json);
+
+        if (_cachedData == null)
+            Debug.LogError("Failed to parse input.json");
+
+        return _cachedData;
+    }
+
+    public List<HomophoneQuestion> LoadHomophoneQuestions()
+    {
+        GameInputData data = LoadData();
+        List<HomophoneQuestion> questions = new List<HomophoneQuestion>();
 
         if (data == null || data.homophoneGames == null)
         {
             Debug.LogError("Failed to parse homophoneGames from input.json");
-            return new List<HomophoneQuestion>();
+            return questions;
         }
-
-        List<HomophoneQuestion> questions = new List<HomophoneQuestion>();
 
         foreach (var entry in data.homophoneGames)
         {
@@ -88,5 +101,41 @@ public class JSONLoader : MonoBehaviour
         }
 
         return questions;
+    }
+
+    public List<TranscriptionGameEntry> LoadTranscriptionEntries()
+    {
+        GameInputData data = LoadData();
+
+        if (data == null || data.transcriptionGames == null)
+        {
+            Debug.LogError("Failed to parse transcriptionGames from input.json");
+            return new List<TranscriptionGameEntry>();
+        }
+
+        return data.transcriptionGames;
+    }
+
+    public List<ProofreadGameEntry> LoadProofreadEntries()
+    {
+        GameInputData data = LoadData();
+
+        if (data == null || data.proofreadGames == null)
+        {
+            Debug.LogError("Failed to parse proofreadGames from input.json");
+            return new List<ProofreadGameEntry>();
+        }
+
+        return data.proofreadGames;
+    }
+
+    public List<string> LoadPrioritizedWords()
+    {
+        GameInputData data = LoadData();
+
+        if (data == null || data.prioritizedWords == null)
+            return new List<string>();
+
+        return data.prioritizedWords;
     }
 }

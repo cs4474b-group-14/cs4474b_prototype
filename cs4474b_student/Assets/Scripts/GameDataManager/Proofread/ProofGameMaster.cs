@@ -1,7 +1,9 @@
+using TMPro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ProofGameMaster : MonoBehaviour
@@ -22,6 +24,11 @@ public class ProofGameMaster : MonoBehaviour
     public List<int> misidentified; // misidentified spelling mistakes
     public List<int> failed_to_indentify; // list of incorrectly spelled words in the provided text
 
+    public GameObject resultsScreen;
+    public TextMeshProUGUI correctText;
+    public TextMeshProUGUI missedText;
+    public TextMeshProUGUI wrongText;
+
     //UTILITY
     public GameObject WORD_PREFAB;
     public static event Action GetData;
@@ -39,6 +46,12 @@ public class ProofGameMaster : MonoBehaviour
 
     public void CalcResults(int index)
     {
+        if (index >= current_words.Count || index >= given_words.Count || index >= correct_words.Count)
+        {
+            Debug.LogWarning($"CalcResults: index {index} out of range.");
+            return;
+        }
+
         string current_spelling = current_words[index];
         string initial_spelling = given_words[index];
         string correct_spelling = correct_words[index];
@@ -52,7 +65,7 @@ public class ProofGameMaster : MonoBehaviour
             else
             {   // spelling changed incorrectly
                 if(initial_spelling == correct_spelling)
-                {   // student inccorectly identified a word as having a spelling mistake
+                {   // student incorrectly identified a word as having a spelling mistake
                     misidentified.Add(index);
                 }
                 else
@@ -74,12 +87,34 @@ public class ProofGameMaster : MonoBehaviour
         }
     }
 
-    public string PrintResults()
+    public void PrintResults()
     {
-        string results = "";
-        // write out results
-        
-        return results;
+        identified_and_correct = new List<int>();
+        identified_but_incorrect = new List<int>();
+        misidentified = new List<int>();
+        failed_to_indentify = new List<int>();
+
+        RequestData();
+
+        for (int i = 0; i < given_words.Count; i++)
+            CalcResults(i);
+
+        resultsScreen.SetActive(true);
+
+        correctText.text = "Corrected:\n" + (identified_and_correct.Count == 0 ? "None" :
+            string.Join("\n", identified_and_correct.Select(i =>
+                $"{given_words[i]} -> {current_words[i]}")));
+
+        missedText.text = "Missed:\n" + (failed_to_indentify.Count == 0 ? "None" :
+            string.Join("\n", failed_to_indentify.Select(i =>
+                $"{given_words[i]} (correct: {correct_words[i]})")));
+
+        wrongText.text = "Wrongly changed:\n" +
+                         (misidentified.Count == 0 && identified_but_incorrect.Count == 0 ? "None" :
+                             string.Join("\n",
+                                 misidentified.Select(i => $"{given_words[i]} -> {current_words[i]} (was already correct)")
+                                     .Concat(identified_but_incorrect.Select(i =>
+                                         $"{given_words[i]} -> {current_words[i]} (correct: {correct_words[i]})"))));
     }
 
     List<string> GetWords(String provided_text)
@@ -111,18 +146,15 @@ public class ProofGameMaster : MonoBehaviour
 
     public void Start()
     {
-        Setup(); // first time setup
+        // Setup(); // first time setup
     } 
 
     public void Setup()
     {
-        //OVERRIDES INPUT REMOVE LATER
-        provided_text  = "hello, thes is an exemple provided_text\n etc.";
-        correct_text = "hello, this is an example provided_text\n etc.";
-        //END OF REMOVE LATER
-
         given_words = GetWords(provided_text);
         correct_words = GetWords(correct_text);
+        current_words = new List<string>(given_words); // initialize current_words
+
         // DEBUG
         PrintWords("given words", given_words);
         PrintWords("correct words", correct_words);
@@ -143,13 +175,12 @@ public class ProofGameMaster : MonoBehaviour
             {   //punctuation should match
                 given_words[i].Remove(lastIndex);
                 correct_words[i].Remove(lastIndex);
-                
             }
 
             GameObject word = Instantiate(WORD_PREFAB);
+            word.transform.SetParent(board.transform, false); // SetParent before Setup
             ProofWord word_script = word.GetComponent<ProofWord>();
-            word_script.Setup(given_words[i], given_words[i]);
-            word.transform.SetParent(board.transform);
+            word_script.Setup(given_words[i], given_words[i], this, i);
 
             // add punctuation after word if applicable
             if(lastChar == ',')
@@ -161,5 +192,15 @@ public class ProofGameMaster : MonoBehaviour
 
                 }
         }
+    }
+
+    public void tryAgain()
+    {
+        SceneManager.LoadScene("Proofread");
+    }
+    
+    public void mainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
