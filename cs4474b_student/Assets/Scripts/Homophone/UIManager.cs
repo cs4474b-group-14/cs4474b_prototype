@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
 
     private List<GameObject> _spawnedCards = new List<GameObject>();
     private int _score = 0;
+    private int _totalAttainable = 0;
 
     void Awake()
     {
@@ -76,7 +77,7 @@ public class UIManager : MonoBehaviour
         feedbackText.text = correct
             ? (points == 10 ? "Perfect! +10" : "Correct! +5")
             : "Try again!";
-        feedbackText.color = correct ? Color.green : Color.red;
+        feedbackText.color = correct ? new Color(25/255f, 185/255f, 25/255f, 1f) : new Color(219/255f, 55/255f, 55/255f, 1);
         UpdateHUD();
 
         if (correct)
@@ -95,16 +96,22 @@ public class UIManager : MonoBehaviour
         if (scoreText != null)
             scoreText.text = $"Score: {_score}";
     }
+    
+    public void SetTotalAttainable(int questionCount)
+    {
+        _totalAttainable = questionCount * 10;
+    }
 
     public void ShowEndScreen()
     {
         endScreen.SetActive(true);
         if (finalScoreText != null)
-            finalScoreText.text = $"You scored {_score} points!";
+            finalScoreText.text = $"You got {_score} out of {_totalAttainable} points!";
     }
     
     public void mainMenu()
     {
+        GameResult.homophonesComplete = true;
         SceneManager.LoadScene(0);
     }
     

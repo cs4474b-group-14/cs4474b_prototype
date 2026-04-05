@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -568,8 +568,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -758,11 +758,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fcb0420b299d747a252254aee12870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MY_INDEX: 0
   button: {fileID: 839341293092592584}
   button_text: {fileID: 1451512584710449976}
   input_field: {fileID: 2983517182139354449}
   initial_spelling: 
   current_spelling: 
+  char_size: 0
 --- !u!114 &572679952578102075
 MonoBehaviour:
   m_ObjectHideFlags: 0

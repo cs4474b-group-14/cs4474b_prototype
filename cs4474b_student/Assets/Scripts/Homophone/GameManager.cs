@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _questions = _loader.LoadHomophoneQuestions();
-        Debug.Log($"Loaded {_questions.Count} questions");
+        UIManager.Instance.SetTotalAttainable(_questions.Count);
         LoadNextQuestion();
     }
 

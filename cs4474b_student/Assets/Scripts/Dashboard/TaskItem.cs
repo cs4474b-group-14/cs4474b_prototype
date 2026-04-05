@@ -33,6 +33,13 @@ public class TaskItem : MonoBehaviour
 
     private void Start()
     {
+        // check if this game was just completed
+        if (gameType == GameType.proofread && GameResult.proofreadComplete)
+            isComplete = true;
+        else if (gameType == GameType.homophones && GameResult.homophonesComplete)
+            isComplete = true;
+
+        OnValidate();
     }
 
     private void OnValidate()
