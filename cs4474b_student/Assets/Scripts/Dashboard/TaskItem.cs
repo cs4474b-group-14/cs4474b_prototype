@@ -4,12 +4,15 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class TaskItem : MonoBehaviour
 {
+
+    public UnityEvent onSelection;
 
     public enum GameType
     {
@@ -20,7 +23,7 @@ public class TaskItem : MonoBehaviour
     }
 
     [SerializeField] int taskIndex = 1;
-    [SerializeField] bool isComplete = false;
+    [SerializeField] public bool isComplete = false;
     [SerializeField] GameType gameType = GameType.None;
     [SerializeField] TextMeshProUGUI textfield;
     [SerializeField] UnityEngine.UI.Image image;
@@ -72,10 +75,12 @@ public class TaskItem : MonoBehaviour
         switch (gameType) 
         {
             case GameType.proofread:
+                Tableau.hasWonProofread = true;
                 SceneManager.LoadScene("Proofread");
                 break;
             case GameType.homophones:
-                SceneManager.LoadScene("Homophones");
+                Tableau.hasWonHomophones = true;
+                SceneManager.LoadScene("homophonesScene");
                 break;
             case GameType.transcription:
                 SceneManager.LoadScene("Transcription");
@@ -84,6 +89,5 @@ public class TaskItem : MonoBehaviour
                 Debug.Log("wtf type of game is this?");
                 break;
         }
-
     }
 }

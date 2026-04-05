@@ -4,39 +4,50 @@ using UnityEngine;
 
 public class Tableau : MonoBehaviour
 {
+    [SerializeField] JSONLoader jsonLoader;
     [SerializeField] GameObject contentField;
-    [SerializeField] GameObject taskItemPrefab; 
+    [SerializeField] GameObject taskItemPrefab;
+    public static bool hasWonProofread = false;
+    public static bool hasWonHomophones = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        test_saves();
-
-
+        //test_saves();
 
         int i = 1;
-        foreach (var game in GameDataManager.Instance.proofreadGames)
+        // change to proof read.
+        if (null != jsonLoader.LoadProofreadEntries())
         {
             // create task items for each game + add as child to content field 
             var newItem = Instantiate(taskItemPrefab);
+            newItem.GetComponent<TaskItem>().isComplete = hasWonProofread;
             newItem.GetComponent<TaskItem>().set_game_type(TaskItem.GameType.proofread, i++);
             newItem.transform.SetParent(contentField.transform, false);
         }
 
-        foreach (var game in GameDataManager.Instance.homophoneGames)
+        if (null != jsonLoader.LoadHomophoneQuestions())
         {
             // create task items for each game + add as child to content field 
             var newItem = Instantiate(taskItemPrefab);
+            newItem.GetComponent<TaskItem>().isComplete = hasWonHomophones;
             newItem.GetComponent<TaskItem>().set_game_type(TaskItem.GameType.homophones, i++);
             newItem.transform.SetParent(contentField.transform, false);
         }
-
+        /*
         foreach (var game in GameDataManager.Instance.transcriptionGames)
         {
             var newItem = Instantiate(taskItemPrefab);
             newItem.GetComponent<TaskItem>().set_game_type(TaskItem.GameType.transcription, i++);
             newItem.transform.SetParent(contentField.transform, false);
         }
+         */
+
+    }
+
+    public void DeleteItem(GameObject taskItem) 
+    { 
+        Destroy(gameObject);
     }
 
     // TODO: Delete this from here; it's just for testing purposes.
