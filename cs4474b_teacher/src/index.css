@@ -1,3 +1,11 @@
+/*
+  This file is for global styles only.
+
+  For component-specific styles, create a separate CSS file with the same name
+  as the .tsx file (for example, App.tsx -> App.css) and import it in the .tsx
+  file.
+*/
+
 :root {
   color-scheme: light dark;
 }
