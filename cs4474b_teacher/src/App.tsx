@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import * as React from "react";
+
 import "./App.css";
 
 // Example component to demonstrate coding conventions
@@ -16,7 +17,7 @@ const Counter = ({ className = "" }: { className?: string }) => {
   );
 };
 
-const App = () => {
+export const App = () => {
   return (
     <div className="App">
       <h1 className="App__title">Spelling Central</h1>
@@ -24,5 +25,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

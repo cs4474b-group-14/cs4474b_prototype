@@ -1,18 +1,3 @@
-/*
-  CLASS NAME CONVENTIONS
-
-  Use BEM (Block, Element, Modifier) style:
-    .Block
-    .Block__element
-    .Block--modifier
-    .Block__element--modifier
-
-  Each React component is a block, and any children within that component are
-  elements. See the existing styles for examples.
-
-  For more details on BEM, see https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
-*/
-
 :root {
   color-scheme: light dark;
 }
@@ -27,34 +12,4 @@ body,
   margin: 0;
   padding: 0;
   height: 100%;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 100%;
-  padding: 24px;
-  gap: 49px;
-}
-.App__title {
-  text-align: center;
-  margin: 0;
-}
-.App__counter {
-  width: 320px;
-}
-
-.Counter {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.Counter__text {
-  margin: 0;
-}
-.Counter__button {
-  height: 32px;
 }
