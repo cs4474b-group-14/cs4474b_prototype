@@ -13,20 +13,14 @@
   For more details on BEM, see https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
 */
 
-.App {
+.Counter {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 100%;
-  padding: 24px;
-  gap: 49px;
+  gap: 16px;
 }
-.App__title {
-  text-align: center;
+.Counter__text {
   margin: 0;
 }
-.App__counter {
-  width: 320px;
+.Counter__button {
+  height: 32px;
 }
