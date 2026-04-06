@@ -52,5 +52,5 @@ body,
   padding: 0;
   height: 100%;
   /* Prevents stray margins from adding a scroll bar */
-  contain: layout;
+  contain: size;
 }
