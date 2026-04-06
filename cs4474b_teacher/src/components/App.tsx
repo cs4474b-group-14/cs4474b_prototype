@@ -34,47 +34,39 @@ export function App() {
           <Route
             path="/edit"
             element={
-              gameSet != null ? (
+              gameSet != null ?
                 <OverviewPage gameSet={gameSet} onGameSetChange={setGameSet} />
-              ) : (
-                <Navigate to="/" replace />
-              )
+              : <Navigate to="/" replace />
             }
           />
           <Route
             path="/edit/proofread"
             element={
-              gameSet != null ? (
+              gameSet != null ?
                 <ProofreadPage gameSet={gameSet} onGameSetChange={setGameSet} />
-              ) : (
-                <Navigate to="/" replace />
-              )
+              : <Navigate to="/" replace />
             }
           />
           <Route
             path="/edit/transcription"
             element={
-              gameSet != null ? (
+              gameSet != null ?
                 <TranscriptionPage
                   gameSet={gameSet}
                   onGameSetChange={setGameSet}
                 />
-              ) : (
-                <Navigate to="/" replace />
-              )
+              : <Navigate to="/" replace />
             }
           />
           <Route
             path="/edit/homophones"
             element={
-              gameSet != null ? (
+              gameSet != null ?
                 <HomophonesPage
                   gameSet={gameSet}
                   onGameSetChange={setGameSet}
                 />
-              ) : (
-                <Navigate to="/" replace />
-              )
+              : <Navigate to="/" replace />
             }
           />
         </Routes>
