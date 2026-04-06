@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import type { GameSet, ProofreadGame } from "../../types/games";
-import { BackButton, PageHeader } from "../../components/PageHeader";
 import { HighlightedTextarea } from "../../components/HighlightedTextarea";
+import { BackButton, PageHeader } from "../../components/PageHeader";
+import type { GameSet, ProofreadGame } from "../../types/games";
 
 import "./ProofreadPage.css";
 
@@ -13,7 +13,7 @@ interface ProofReadPageProps {
 
 function normalizeParagraphs(games: ProofreadGame[]): ProofreadGame[] {
   const nonEmptyGames = games.filter(
-    (game) => game.answerText.trim() !== "" || game.errorCount > 0
+    (game) => game.answerText.trim() !== "" || game.errorCount > 0,
   );
 
   return [...nonEmptyGames, { answerText: "", errorCount: 1 }];
@@ -24,22 +24,25 @@ function normalizePrioritizedWords(words: string[]): string[] {
   return [...nonEmptyWords, ""];
 }
 
-export function ProofreadPage({ gameSet, onGameSetChange, }: ProofReadPageProps ) {
+export function ProofreadPage({
+  gameSet,
+  onGameSetChange,
+}: ProofReadPageProps) {
   const [games, setGames] = React.useState<ProofreadGame[]>(
-    gameSet.proofreadGames.length > 0
-    ? normalizeParagraphs(gameSet.proofreadGames)
-    : [{ answerText: "", errorCount: 1}]
+    gameSet.proofreadGames.length > 0 ?
+      normalizeParagraphs(gameSet.proofreadGames)
+    : [{ answerText: "", errorCount: 1 }],
   );
 
   const [prioritizedWords, setPrioritizedWords] = React.useState<string[]>(
-    gameSet.prioritizedWords.length > 0
-    ? normalizePrioritizedWords(gameSet.prioritizedWords)
-    : [""]
+    gameSet.prioritizedWords.length > 0 ?
+      normalizePrioritizedWords(gameSet.prioritizedWords)
+    : [""],
   );
 
   const syncGameSet = (
     updatedGames: ProofreadGame[],
-    updatedWords: string[]
+    updatedWords: string[],
   ) => {
     const normalizedGames = normalizeParagraphs(updatedGames);
     const normalizedWords = normalizePrioritizedWords(updatedWords);
@@ -50,7 +53,7 @@ export function ProofreadPage({ gameSet, onGameSetChange, }: ProofReadPageProps 
     onGameSetChange({
       ...gameSet,
       proofreadGames: normalizedGames.filter(
-        (game) => game.answerText.trim() !== ""
+        (game) => game.answerText.trim() !== "",
       ),
       prioritizedWords: normalizedWords.filter((word) => word.trim() !== ""),
     });
@@ -101,7 +104,7 @@ export function ProofreadPage({ gameSet, onGameSetChange, }: ProofReadPageProps 
 
   const getDuplicateParagraphError = (
     currentGame: ProofreadGame,
-    currentIndex: number
+    currentIndex: number,
   ) => {
     const currentText = currentGame.answerText.trim().toLowerCase();
     if (!currentText) return null;
@@ -109,7 +112,7 @@ export function ProofreadPage({ gameSet, onGameSetChange, }: ProofReadPageProps 
     const duplicateExists = games.some(
       (game, index) =>
         index !== currentIndex &&
-        game.answerText.trim().toLowerCase() === currentText
+        game.answerText.trim().toLowerCase() === currentText,
     );
 
     return duplicateExists ? "This exact paragraph already exists." : null;
@@ -125,12 +128,12 @@ export function ProofreadPage({ gameSet, onGameSetChange, }: ProofReadPageProps 
           <BackButton icon="back" linkTo="/">
             Back
           </BackButton>
-      </PageHeader>
+        </PageHeader>
 
         <h1 className="ProofReadPage__title">Proofread Games</h1>
       </div>
 
-        <div className="ProofReadPage__layout">
+      <div className="ProofReadPage__layout">
         <section className="ProofReadPage__panel">
           <div className="ProofReadPage__panel-header">
             <h2 className="ProofReadPage__section-title">Paragraphs</h2>
@@ -154,9 +157,9 @@ export function ProofreadPage({ gameSet, onGameSetChange, }: ProofReadPageProps 
                   <article key={index} className="ProofReadPage__card">
                     <div className="ProofReadPage__card-header">
                       <h3 className="ProofReadPage__card-title">
-                        {isTrailingEmpty
-                          ? "New paragraph"
-                          : `Paragraph ${String(index + 1).padStart(2, "0")}`}
+                        {isTrailingEmpty ?
+                          "New paragraph"
+                        : `Paragraph ${String(index + 1).padStart(2, "0")}`}
                       </h3>
 
                       {!isTrailingEmpty && (
@@ -178,11 +181,13 @@ export function ProofreadPage({ gameSet, onGameSetChange, }: ProofReadPageProps 
                         value={game.answerText}
                         words={prioritizedWords}
                         placeholder={
-                          isTrailingEmpty
-                            ? "Type to add a new paragraph..."
-                            : "Type or paste the correct paragraph here..."
+                          isTrailingEmpty ?
+                            "Type to add a new paragraph..."
+                          : "Type or paste the correct paragraph here..."
                         }
-                        onChange={(value) => handleParagraphChange(index, value)}
+                        onChange={(value) =>
+                          handleParagraphChange(index, value)
+                        }
                       />
                     </label>
 
@@ -222,7 +227,8 @@ export function ProofreadPage({ gameSet, onGameSetChange, }: ProofReadPageProps 
           <div className="ProofReadPage__panel-header">
             <h2 className="ProofReadPage__section-title">Focused Words</h2>
             <p className="ProofReadPage__section-text">
-              These words are more likely to be misspelled and are shared across the game set.
+              These words are more likely to be misspelled and are shared across
+              the game set.
             </p>
           </div>
 
@@ -239,9 +245,9 @@ export function ProofreadPage({ gameSet, onGameSetChange, }: ProofReadPageProps 
                       type="text"
                       value={word}
                       placeholder={
-                        isTrailingEmpty
-                          ? "Type to add a new focus word..."
-                          : "Focus word"
+                        isTrailingEmpty ?
+                          "Type to add a new focus word..."
+                        : "Focus word"
                       }
                       onChange={(e) =>
                         handlePrioritizedWordChange(index, e.target.value)
