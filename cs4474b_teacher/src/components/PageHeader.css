@@ -44,3 +44,10 @@
 
   user-select: none;
 }
+.BackButton__icon--close {
+  transform: translateY(-2px);
+}
+
+.BackButton__label {
+  transform: translateY(-1px);
+}

@@ -31,7 +31,15 @@ export function BackButton({
 
   return (
     <Link className={clsx("BackButton", className)} to={linkTo}>
-      <span className="BackButton__icon">{iconCharacter}</span>
+      <span
+        className={clsx(
+          "BackButton__icon",
+          // The × icon needs special alignment tweaks
+          icon === "close" && "BackButton__icon--close",
+        )}
+      >
+        {iconCharacter}
+      </span>
       <span className="BackButton__label">{children}</span>
     </Link>
   );
