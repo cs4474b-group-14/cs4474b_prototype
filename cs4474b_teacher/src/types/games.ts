@@ -9,6 +9,7 @@ export type TranscriptionGame = {
 };
 
 export type HomophoneGame = {
+  id: string;
   words: string[];
   exampleSentences: string[];
 };
@@ -17,7 +18,7 @@ export type GameSet = {
   name?: string;
   proofreadGames: ProofreadGame[];
   transcriptionGames: TranscriptionGame[];
-  homophoneGames: TranscriptionGame[];
+  homophoneGames: HomophoneGame[];
   prioritizedWords: string[];
 };
 
