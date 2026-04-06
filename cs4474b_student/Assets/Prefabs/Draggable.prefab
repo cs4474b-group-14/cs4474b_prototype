@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Test
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a3c040c62dfddd14aa8f1919b7c22578, type: 2}
+  m_sharedMaterial: {fileID: 5713436147681004084, guid: a3c040c62dfddd14aa8f1919b7c22578, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 7943493262594122850}
   - component: {fileID: 6238958712976679378}
   - component: {fileID: 6219633329599131539}
-  - component: {fileID: 1466751883651289977}
+  - component: {fileID: 5947128854592715873}
   - component: {fileID: 8409822256019016442}
   m_Layer: 5
   m_Name: Draggable
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1466751883651289977
+--- !u!114 &5947128854592715873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

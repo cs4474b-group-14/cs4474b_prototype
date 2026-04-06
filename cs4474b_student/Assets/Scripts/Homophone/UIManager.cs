@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using Homophone;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
@@ -42,7 +43,7 @@ public class UIManager : MonoBehaviour
 
     public void DisplayQuestion(HomophoneQuestion q)
     {
-        sentenceText.text = q.sentence.Replace("_", "<color=#FFD700><u>_____</u></color>");
+        sentenceText.text = q.sentence.Replace("_", "<color=#0069FF><u>_____</u></color>");
 
         foreach (var c in _spawnedCards) Destroy(c);
         _spawnedCards.Clear();
@@ -75,7 +76,7 @@ public class UIManager : MonoBehaviour
         if (correct) _score += points;
         feedbackPanel.SetActive(true);
         feedbackText.text = correct
-            ? (points == 10 ? "Perfect! +10" : "Correct! +5")
+            ? (points == 10 ? "Perfect!\n+10" : "Correct!\n+5")
             : "Try again!";
         feedbackText.color = correct ? new Color(25/255f, 185/255f, 25/255f, 1f) : new Color(219/255f, 55/255f, 55/255f, 1);
         UpdateHUD();
