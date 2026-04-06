@@ -9,13 +9,15 @@ export type TranscriptionGame = {
 };
 
 export type HomophoneGame = {
+  id: string;
   words: string[];
+  exampleSentences: string[];
 };
 
 export type GameSet = {
   proofreadGames: ProofreadGame[];
   transcriptionGames: TranscriptionGame[];
-  homophoneGames: TranscriptionGame[];
+  homophoneGames: HomophoneGame[];
   prioritizedWords: string[];
 };
 

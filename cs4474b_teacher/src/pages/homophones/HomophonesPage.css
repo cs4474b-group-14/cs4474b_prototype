@@ -1,0 +1,277 @@
+/* --- CONTAINER --- */
+/* --- TODO: MAKE THE MAIN WORD IN THE SENTENCE HEADER TITLE BOLDED --- */
+.HomophonesContainer {
+  background-color: #f8f9fa;
+  color: #212529;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.HomophonesHeader {
+  padding: 20px 40px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #dee2e6;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- CLEAR ALL BUTTON--- */
+.ClearAllBtn {
+  background: transparent;
+  border: 1px solid #dee2e6;
+  color: #6c757d;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ClearAllBtn:hover {
+  background-color: #fff5f5;
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+/* --- BACK BUTTON--- */
+.BackButton {
+  color: #007fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* --- GRID LAYOUT --- */
+.HomophonesList {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 30px 40px 100px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+/* --- ACTUAL CARDS --- */
+.HomophoneSet {
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.HomophoneSet:hover {
+  border-color: #007fff;
+  transform: translateY(-2px);
+}
+
+.SetHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.SetTitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #adb5bd;
+  margin: 0;
+}
+
+/* --- 2x2 GRID-- */
+.WordGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.WordWrapper {
+  position: relative;
+}
+
+.WordBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s;
+  border: 1px solid #dee2e6;
+}
+
+/* text box empty */
+.WordBox.empty {
+  background: #fcfcfc;
+  border-style: dashed;
+  color: #adb5bd;
+}
+
+/* text box has a word */
+.WordBox.active {
+  background: #f1f3f5;
+  border-style: solid;
+  color: #212529;
+  font-weight: 500;
+}
+
+
+.WordBox:focus {
+  border-color: #007fff;
+  background: #ffffff;
+  border-style: solid;
+  box-shadow: 0 0 0 3px rgba(0, 127, 255, 0.1);
+}
+
+/* --- ACTIONN BUTTONS --- */
+.DeleteWordBtn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 2;
+}
+
+.WordWrapper:hover .DeleteWordBtn {
+  opacity: 1;
+}
+
+.DeleteSetBtn {
+  background: transparent;
+  border: none;
+  color: #ced4da;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.DeleteSetBtn:hover {
+  color: #dc3545;
+}
+
+.AddSetButton {
+  height: auto;
+  min-height: 165px; /* Matches card height */
+  align-self: start;
+  background: transparent;
+  border: 2px dashed #ced4da;
+  border-radius: 12px;
+  color: #adb5bd;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.AddSetButton:not(:disabled):hover {
+  background: #ffffff;
+  border-color: #007fff;
+  color: #007fff;
+}
+
+.AddSetButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ValidationWrapper {
+  margin-top: auto;
+  min-height: 20px;
+}
+
+.ErrorText { color: #dc3545; font-size: 0.7rem; font-weight: bold; margin-top: 5px; }
+.WarningText { color: #856404; font-size: 0.7rem; margin-top: 5px; }
+
+/* --- SCROLLBAR --- */
+.HomophonesList::-webkit-scrollbar { width: 6px; }
+.HomophonesList::-webkit-scrollbar-thumb { background: #dee2e6; border-radius: 10px; }
+
+
+
+/* --- HEADER STUFF --- */
+.HeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ViewToggle {
+  background: #e9ecef;
+  border: 1px solid #dee2e6;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #495057;
+}
+
+.ViewToggle.active {
+  background: #007fff;
+  color: white;
+  border-color: #0056b3;
+}
+
+/* --- INCOMPLETE WARNING--- */
+.HomophoneSet.incomplete {
+  border-left: 4px solid #856404; /* Maybe I should change the colour */
+}
+
+/* --- SENTENCE MODE--- */
+.SentenceList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.SentenceInput {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  background: #fcfcfc;
+  font-size: 0.85rem;
+  font-family: inherit;
+  resize: none;
+  transition: border-color 0.2s;
+}
+
+.SentenceInput:focus {
+  border-color: #007fff;
+  background: white;
+  outline: none;
+}
+
+/* MAKES THE ENTIRE GRID RESPONSIVE, Delete this if you don't like the stretching. I think its ok.*/
+.HomophonesList {
+  align-items: stretch; 
+}
