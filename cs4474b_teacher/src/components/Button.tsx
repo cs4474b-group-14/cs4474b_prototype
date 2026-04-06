@@ -11,19 +11,16 @@ import "./Button.css";
 
 export type ButtonVariant = "primary" | "secondary";
 
-export function Button<
-  C extends
-    | keyof React.JSX.IntrinsicElements
-    | React.JSXElementConstructor<any>,
->({
-  as: Component = "button",
+export function Button<C extends React.ElementType = "button">({
+  as,
   className,
   variant = "secondary",
   ...props
-}: React.ComponentProps<C> & {
+}: React.ComponentPropsWithoutRef<C> & {
   as?: C;
   variant?: ButtonVariant;
 }) {
+  const Component = as ?? "button";
   return (
     <Component
       className={clsx("Button", `Button--${variant}`, className)}
