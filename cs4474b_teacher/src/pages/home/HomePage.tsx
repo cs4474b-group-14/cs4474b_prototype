@@ -13,7 +13,8 @@ export function HomePage() {
           className="HomePage__button"
           variant="primary"
           as={Link}
-          to="/new"
+          // TODO: Reset currently loaded data
+          to="/edit"
         >
           New game set
         </Button>
@@ -21,7 +22,8 @@ export function HomePage() {
           className="HomePage__button"
           variant="secondary"
           as={Link}
-          to="/new"
+          // TODO: Show a dialog to open a JSON file
+          to="/edit"
         >
           Edit existing game set
         </Button>
