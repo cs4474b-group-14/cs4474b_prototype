@@ -1,0 +1,190 @@
+.ProofReadPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 100%;
+  padding: 48px 24px;
+  gap: 32px;
+}
+
+.ProofReadPage__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ProofReadPage__back-link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.ProofReadPage__back-link:hover {
+  text-decoration: underline;
+}
+
+.ProofReadPage__title {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.ProofReadPage__layout {
+  width: 100%;
+  max-width: 1200px;
+
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+  min-height: 650px;
+}
+
+.ProofReadPage__panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+
+  border: 1px solid #cccccc;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.ProofReadPage__panel-header {
+  padding: 20px;
+  border-bottom: 1px solid #dddddd;
+  background: #fafafa;
+}
+
+.ProofReadPage__section-title {
+  margin: 0 0 8px 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.ProofReadPage__section-text {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.ProofReadPage__panel-body {
+  padding: 20px;
+  min-height: 0;
+}
+
+.ProofReadPage__panel-body--scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ProofReadPage__paragraph-list,
+.ProofReadPage__word-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ProofReadPage__card,
+.ProofReadPage__word-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 16px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.ProofReadPage__card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.ProofReadPage__card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.ProofReadPage__label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.ProofReadPage__input,
+.ProofReadPage__textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font: inherit;
+  background: #ffffff;
+}
+
+.ProofReadPage__textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.ProofReadPage__number-input {
+  max-width: 140px;
+}
+
+.ProofReadPage__highlight {
+  background-color: #fff3a3;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+.ProofReadPage__warning {
+  padding: 12px;
+  border: 1px solid #e0b4b4;
+  border-radius: 8px;
+  background: #fff5f5;
+}
+
+.ProofReadPage__warning p {
+  margin: 0;
+}
+
+.ProofReadPage__delete {
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.ProofReadPage__delete:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .ProofReadPage__layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .ProofReadPage__panel {
+    min-height: 320px;
+  }
+}
+
+.ProofReadPage__panel-body--scroll {
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
