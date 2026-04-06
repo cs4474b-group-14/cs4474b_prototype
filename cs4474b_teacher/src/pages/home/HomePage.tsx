@@ -4,7 +4,7 @@ import { Button } from "../../components/Button";
 
 import "./HomePage.css";
 
-export const HomePage = () => {
+export function HomePage() {
   return (
     <div className="HomePage">
       <h1 className="HomePage__title">Spelling Central</h1>
@@ -28,4 +28,4 @@ export const HomePage = () => {
       </div>
     </div>
   );
-};
+}

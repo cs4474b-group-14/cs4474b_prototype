@@ -6,7 +6,7 @@ import { Button } from "./Button";
 import "./Counter.css";
 
 // Example component to demonstrate coding conventions
-export const Counter = ({ className }: { className?: string }) => {
+export function Counter({ className }: { className?: string }) {
   const [count, setCount] = React.useState(0);
 
   return (
@@ -21,4 +21,4 @@ export const Counter = ({ className }: { className?: string }) => {
       </Button>
     </div>
   );
-};
+}
