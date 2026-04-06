@@ -61,3 +61,9 @@
   --button-color: #007fff;
   --button-text-color: #ffffff;
 }
+
+.Button--large {
+  font-size: 1rem;
+  min-height: 48px;
+  min-width: 240px;
+}

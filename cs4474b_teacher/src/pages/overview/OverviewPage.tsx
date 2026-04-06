@@ -60,7 +60,7 @@ export function OverviewPage({
       <main className="OverviewPage__content">
         <Metadata />
         <GameOverviews gameSet={gameSet} />
-        <Button variant="primary">Download</Button>
+        <Button variant="primary" size="large">Download</Button>
       </main>
     </div>
   );

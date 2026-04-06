@@ -41,6 +41,7 @@ export function HomePage({
         <Button
           className="HomePage__button"
           variant="primary"
+          size="large"
           onClick={handleNew}
         >
           New game set
@@ -48,6 +49,7 @@ export function HomePage({
         <Button
           className="HomePage__button"
           variant="secondary"
+          size="large"
           onClick={() => filePickerRef.current?.click()}
         >
           Open existing game set
