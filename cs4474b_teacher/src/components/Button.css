@@ -17,15 +17,24 @@
     var(--button-gradient-shadow)
   );
   background-color: var(--button-color);
+  color: var(--button-text-color);
   border: 1px solid var(--button-border);
   border-radius: 4px;
 
   min-height: 36px;
   min-width: 128px;
-  padding: 2px 8px;
+  padding: 2px 24px;
 
   font-size: 0.875rem;
   font-weight: bold;
+  text-decoration: none;
+
+  /* Center the content */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
 
   cursor: pointer;
 
@@ -50,7 +59,7 @@
 
 .Button--primary {
   --button-color: #007fff;
-  color: #ffffff;
+  --button-text-color: #ffffff;
 
   &:hover {
     --button-color: #006fdf;
