@@ -18,10 +18,20 @@ export function HomePage({
     onLoadGameSet(EMPTY_GAME_SET);
     navigate("/edit");
   };
-  const handleOpen = (
+  const handleOpen = async (
     e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
   ) => {
-    console.log("open", e);
+    // We always attach this event handler to an input of type="file",
+    // so this will never be null
+    const files = e.currentTarget.files!;
+    const file = files[0];
+    // TODO: Show loading state visually
+    const fileText = await file.text()
+
+    // We'll just trust that the file has the right structure. It's a prototype.
+    const gameSet = JSON.parse(fileText) as GameSet;
+    onLoadGameSet(gameSet);
+    navigate("/edit");
   };
 
   return (
@@ -47,6 +57,7 @@ export function HomePage({
           ref={filePickerRef}
           className="HomePage__file-picker"
           type="file"
+          accept=".json,application/json"
           onChange={handleOpen}
         />
       </div>
