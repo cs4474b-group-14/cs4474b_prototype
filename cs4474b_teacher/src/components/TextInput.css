@@ -1,0 +1,17 @@
+.TextInput {
+  background-color: oklch(1 0 0);
+  color: oklch(0 0 0);
+
+  border: 1px solid oklch(0.65 0 0);
+  border-radius: 4px;
+
+  min-height: 36px;
+  min-width: 128px;
+  padding: 2px 8px;
+
+  font-size: 0.875rem;
+
+  &:hover {
+    border-color: oklch(0.5 0 0);
+  }
+}
