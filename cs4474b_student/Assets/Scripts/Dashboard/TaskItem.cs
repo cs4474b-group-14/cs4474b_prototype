@@ -97,7 +97,8 @@ public class TaskItem : MonoBehaviour
                 SceneManager.LoadScene("homophonesScene");
                 break;
             case GameType.transcription:
-                SceneManager.LoadScene("Transcription");
+                Tableau.hasWonTranscription = true;
+                SceneManager.LoadScene("Transcribe");
                 break;
             default:
                 Debug.Log("wtf type of game is this?");

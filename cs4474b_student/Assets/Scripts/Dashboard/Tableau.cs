@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tableau : MonoBehaviour
@@ -9,6 +10,7 @@ public class Tableau : MonoBehaviour
     [SerializeField] GameObject taskItemPrefab;
     public static bool hasWonProofread = false;
     public static bool hasWonHomophones = false;
+    public static bool hasWonTranscription = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,14 +36,17 @@ public class Tableau : MonoBehaviour
             newItem.GetComponent<TaskItem>().set_game_type(TaskItem.GameType.homophones, i++);
             newItem.transform.SetParent(contentField.transform, false);
         }
-        /*
-        foreach (var game in GameDataManager.Instance.transcriptionGames)
+
+       
+        
+        if (null != jsonLoader.LoadTranscriptionEntries())
         {
             var newItem = Instantiate(taskItemPrefab);
+            newItem.GetComponent<TaskItem>().isComplete = hasWonTranscription;
             newItem.GetComponent<TaskItem>().set_game_type(TaskItem.GameType.transcription, i++);
             newItem.transform.SetParent(contentField.transform, false);
         }
-         */
+         
 
     }
 
