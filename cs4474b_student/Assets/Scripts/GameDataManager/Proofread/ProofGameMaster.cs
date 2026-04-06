@@ -101,15 +101,15 @@ public class ProofGameMaster : MonoBehaviour
 
         resultsScreen.SetActive(true);
 
-        correctText.text = "Corrected:\n" + (identified_and_correct.Count == 0 ? "None" :
+        correctText.text = (identified_and_correct.Count == 0 ? "None" :
             string.Join("\n", identified_and_correct.Select(i =>
                 $"{given_words[i]} -> {current_words[i]}")));
 
-        missedText.text = "Missed:\n" + (failed_to_indentify.Count == 0 ? "None" :
+        missedText.text = (failed_to_indentify.Count == 0 ? "None" :
             string.Join("\n", failed_to_indentify.Select(i =>
                 $"{given_words[i]} (correct: {correct_words[i]})")));
 
-        wrongText.text = "Wrongly changed:\n" +
+        wrongText.text = 
                          (misidentified.Count == 0 && identified_but_incorrect.Count == 0 ? "None" :
                              string.Join("\n",
                                  misidentified.Select(i => $"{given_words[i]} -> {current_words[i]} (was already correct)")
@@ -136,7 +136,6 @@ public class ProofGameMaster : MonoBehaviour
     //DEBUG FUNCTION
     public void PrintWords(string name, List<string> words)
     {
-        output_lol += name + ": \n";
         foreach(string word in words)
         {
             output_lol += word + " ";
