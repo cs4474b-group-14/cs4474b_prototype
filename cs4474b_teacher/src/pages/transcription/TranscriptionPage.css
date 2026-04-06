@@ -1,0 +1,16 @@
+.OverviewPage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.OverviewPage__content {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: auto;
+
+  gap: 32px;
+  padding: 24px;
+
+  width: 320px;
+}
