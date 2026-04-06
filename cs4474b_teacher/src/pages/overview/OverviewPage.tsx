@@ -82,12 +82,30 @@ export function OverviewPage({
   gameSet: GameSet;
   onGameSetChange: (gameSet: GameSet) => void;
 }) {
+  const handleDownload = () => {
+    const json = JSON.stringify(gameSet);
+
+    // https://coreui.io/answers/how-to-download-a-file-in-javascript/
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${gameSet.name}.json`;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="OverviewPage">
       <main className="OverviewPage__content">
         <Metadata gameSet={gameSet} onGameSetChange={onGameSetChange} />
         <GameOverviews gameSet={gameSet} />
-        <Button variant="primary" size="large">
+        <Button variant="primary" size="large" onClick={handleDownload}>
           Download
         </Button>
       </main>
