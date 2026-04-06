@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router";
+import { v4 as uuidv4 } from "uuid";
 
 import { Button } from "../../components/Button";
 import { NEW_GAME_SET, type GameSet } from "../../types/games";
@@ -34,6 +35,12 @@ export function HomePage({
 
     // We'll just trust that the file has the right structure. It's a prototype.
     const gameSet = JSON.parse(fileText) as GameSet;
+
+    // The homophones editor requires each HomophoneGame to have an ID.
+    for (const homophoneGame of gameSet.homophoneGames) {
+      homophoneGame.id ??= uuidv4();
+    }
+
     onGameSetChange(gameSet);
     navigate("/edit");
   };
