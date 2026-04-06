@@ -542,6 +542,7 @@ MonoBehaviour:
   wrongText: {fileID: 1109406184}
   WORD_PREFAB: {fileID: 6609079569619224632, guid: 962b71ba8ec222640a8a9f59dd58ab53, type: 3}
   board: {fileID: 103798123}
+  titleText: {fileID: 571595491}
 --- !u!114 &409328456
 MonoBehaviour:
   m_ObjectHideFlags: 0
