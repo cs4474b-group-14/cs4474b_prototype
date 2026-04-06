@@ -1,7 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router";
 
-import { Button } from "../../components/Button";
 import type { GameSet, ProofreadGame } from "../../types/games";
 import { BackButton, PageHeader } from "../../components/PageHeader";
 import { HighlightedTextarea } from "../../components/HighlightedTextarea";
