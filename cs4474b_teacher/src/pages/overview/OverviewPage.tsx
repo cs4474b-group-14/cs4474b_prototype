@@ -6,6 +6,7 @@ import type { GameSet } from "../../types/games";
 import "./OverviewPage.css";
 
 import { Button } from "../../components/Button";
+import { TextInput } from "../../components/TextInput";
 
 function Metadata({
   gameSet,
@@ -18,8 +19,7 @@ function Metadata({
     <div className="Metadata">
       <label className="Metadata__field">
         <span className="Metadata__label">Name</span>
-        <input
-          type="text"
+        <TextInput
           value={gameSet.name ?? ""}
           onChange={(e) =>
             onGameSetChange({
@@ -27,7 +27,7 @@ function Metadata({
               name: e.target.value,
             })
           }
-        ></input>
+        />
       </label>
     </div>
   );
