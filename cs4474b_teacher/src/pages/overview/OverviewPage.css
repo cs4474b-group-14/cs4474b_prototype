@@ -1,0 +1,50 @@
+.OverviewPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  padding: 48px 24px;
+  gap: 48px;
+}
+.OverviewPage__content {
+  width: 320px;
+}
+
+.GameOverviews {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.GameOverview {
+  display: grid;
+  grid-template:
+    "title    arrow" auto
+    "subtitle arrow" auto
+    / 1fr auto;
+
+  column-gap: 16px;
+
+  color: #000000;
+  text-decoration: none;
+}
+.GameOverview__title {
+  grid-area: title;
+  margin: 0;
+}
+.GameOverview__subtitle {
+  grid-area: subtitle;
+  margin: 0;
+}
+.GameOverview__arrow {
+  grid-area: arrow;
+  align-self: center;
+
+  display: block;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 24px;
+}

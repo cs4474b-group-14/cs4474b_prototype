@@ -1,28 +1,49 @@
-import { Link } from "react-router";
+import clsx from "clsx";
+import { Link, type To } from "react-router";
 
 import type { GameSet } from "../../types/games";
+
+import "./OverviewPage.css";
+
+import { Button } from "../../components/Button";
 
 function Metadata() {
   return <div className="Metadata"></div>;
 }
 
-function GameOverviews({
-  gameSet,
-  onGameSetChange = () => {},
+function GameOverview({
+  className,
+  title,
+  subtitle,
+  linkTo,
 }: {
-  gameSet: GameSet;
-  onGameSetChange: (gameSet: GameSet) => void;
+  className?: string;
+  title: string;
+  subtitle: string;
+  linkTo: To;
 }) {
   return (
+    <Link className={clsx("GameOverview", className)} to={linkTo}>
+      <h2 className="GameOverview__title">{title}</h2>
+      <p className="GameOverview__subtitle">{subtitle}</p>
+      <span className="GameOverview__arrow">→</span>
+    </Link>
+  );
+}
+
+function GameOverviews({ gameSet }: { gameSet: GameSet }) {
+  return (
     <div className="GameOverviews">
-      {/* TODO: Make this an actual UI */}
-      <pre>
-        <code>
-          {gameSet.proofreadGames.length} proofread games
-          {gameSet.transcriptionGames.length} transcription games
-          {gameSet.homophoneGames.length} homophone games
-        </code>
-      </pre>
+      <GameOverview
+        title="Proofread"
+        subtitle={`${gameSet.proofreadGames.length} paragraphs`}
+        linkTo="/edit/proofread"
+      />
+      <GameOverview
+        title="Homophones"
+        subtitle={`${gameSet.homophoneGames.length} homophone sets`}
+        linkTo="/edit/homophones"
+      />
     </div>
   );
 }
@@ -36,20 +57,11 @@ export function OverviewPage({
 }) {
   return (
     <div className="OverviewPage">
-      <Metadata />
-      <GameOverviews gameSet={gameSet} onGameSetChange={onGameSetChange} />
-      {/* TODO: very placeholder */}
-      <ul>
-        <li>
-          <Link to="/edit/proofread">Placeholder link: Proofread</Link>
-        </li>
-        <li>
-          <Link to="/edit/transcription">Placeholder link: Transcription</Link>
-        </li>
-        <li>
-          <Link to="/edit/homophones">Placeholder link: Homophones</Link>
-        </li>
-      </ul>
+      <main className="OverviewPage__content">
+        <Metadata />
+        <GameOverviews gameSet={gameSet} />
+        <Button variant="primary">Download</Button>
+      </main>
     </div>
   );
 }
