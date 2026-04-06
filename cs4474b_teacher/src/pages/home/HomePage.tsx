@@ -1,10 +1,25 @@
-import { Link } from "react-router";
+import * as React from "react";
+import { useNavigate } from "react-router";
 
 import { Button } from "../../components/Button";
 
 import "./HomePage.css";
 
 export function HomePage() {
+  const navigate = useNavigate();
+  const filePickerRef = React.useRef<HTMLInputElement | null>(null);
+
+  const handleNew = (
+    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
+  ) => {
+    console.log("new", e);
+  };
+  const handleOpen = (
+    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
+  ) => {
+    console.log("open", e);
+  };
+
   return (
     <div className="HomePage">
       <h1 className="HomePage__title">Spelling Central</h1>
@@ -12,21 +27,24 @@ export function HomePage() {
         <Button
           className="HomePage__button"
           variant="primary"
-          as={Link}
-          // TODO: Reset currently loaded data
-          to="/edit"
+          onClick={handleNew}
         >
           New game set
         </Button>
         <Button
           className="HomePage__button"
           variant="secondary"
-          as={Link}
-          // TODO: Show a dialog to open a JSON file
-          to="/edit"
+          onClick={() => filePickerRef.current?.click()}
         >
           Edit existing game set
         </Button>
+        {/* This will be hidden by CSS and triggered by the above button */}
+        <input
+          ref={filePickerRef}
+          className="HomePage__file-picker"
+          type="file"
+          onChange={handleOpen}
+        />
       </div>
     </div>
   );

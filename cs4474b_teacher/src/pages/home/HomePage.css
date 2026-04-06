@@ -28,3 +28,7 @@
   height: 48px;
   width: 240px;
 }
+
+.HomePage__file-picker {
+  display: none;
+}
