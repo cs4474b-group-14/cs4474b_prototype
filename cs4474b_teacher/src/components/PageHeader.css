@@ -6,13 +6,15 @@
   padding: 8px 12px;
 }
 
-.PageHeader__back-link {
+/* FIXME: This clashes with the styles for the homophone page */
+.BackButton {
   display: flex;
   flex-direction: row;
   align-items: center;
 
   min-height: 32px;
   padding: 4px;
+  padding-right: 12px;
   gap: 8px;
 
   background-color: oklch(1 0 0);
@@ -30,7 +32,7 @@
   }
 }
 
-.PageHeader__back-icon {
+.BackButton__icon {
   display: block;
   width: 24px;
   height: 24px;
