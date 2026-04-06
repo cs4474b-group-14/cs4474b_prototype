@@ -40,7 +40,7 @@ export function App() {
             path="/"
             element={
               <HomePage
-                gameSet={gameSet ?? undefined}
+                gameSet={gameSet}
                 onGameSetChange={setGameSet}
               />
             }

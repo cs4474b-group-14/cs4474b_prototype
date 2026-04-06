@@ -12,7 +12,7 @@ export function HomePage({
   gameSet,
   onGameSetChange: onGameSetChange = () => {},
 }: {
-  gameSet?: GameSet | undefined;
+  gameSet?: GameSet | null;
   onGameSetChange?: (gameSet: GameSet) => void;
 }) {
   const navigate = useNavigate();
