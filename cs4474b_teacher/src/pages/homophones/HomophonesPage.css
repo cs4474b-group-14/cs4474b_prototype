@@ -1,277 +1,240 @@
-/* --- CONTAINER --- */
-/* --- TODO: MAKE THE MAIN WORD IN THE SENTENCE HEADER TITLE BOLDED --- */
-.HomophonesContainer {
-  background-color: #f8f9fa;
-  color: #212529;
+@import url('https://atkinsonforbraille.org/fonts/atkinson-hyperlegible-next/atkinson-hyperlegible-next.css');
+
+.HomophonesPage {
+  background-color: #ffffff;
+  color: #000000;           
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
-.HomophonesHeader {
-  padding: 20px 40px;
-  flex-shrink: 0;
-  border-bottom: 1px solid #dee2e6;
-  background: #ffffff;
+/* Local Header stuff */
+.HomophonesPage__header {
+  padding: 12px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  background: #ffffff;
+  z-index: 10;
 }
 
-/* --- CLEAR ALL BUTTON--- */
-.ClearAllBtn {
-  background: transparent;
-  border: 1px solid #dee2e6;
-  color: #6c757d;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.ClearAllBtn:hover {
-  background-color: #fff5f5;
-  border-color: #dc3545;
-  color: #dc3545;
-}
-
-/* --- BACK BUTTON--- */
-.BackButton {
-  color: #007fff;
+.HomophonesPage__back-btn {
   text-decoration: none;
+  color: inherit;
   font-size: 1rem;
-  font-weight: 600;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
 }
 
-/* --- GRID LAYOUT --- */
-.HomophonesList {
+.HomophonesPage__back-btn:hover {
+  opacity: 0.7;
+}
+
+/*  Grid */
+.HomophonesPage__list {
   flex-grow: 1;
   overflow-y: auto;
-  padding: 30px 40px 100px 40px;
+  padding: 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  grid-auto-rows: min-content; 
+  gap: 24px;
   align-items: start;
 }
 
-/* --- ACTUAL CARDS --- */
-.HomophoneSet {
+
+.HomophoneCard {
   background: #ffffff;
-  border: 1px solid #ced4da;
-  border-radius: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
   padding: 20px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: transform 0.2s, border-color 0.2s;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  height: auto;
 }
 
-.HomophoneSet:hover {
-  border-color: #007fff;
-  transform: translateY(-2px);
+/* TOTALLY EMPTY */
+
+.HomophoneCard.is-empty .HomophoneCard__indicator {
+  background-color: #a30013;
 }
 
-.SetHeader {
+/* PARTIALLY FILLED */
+
+.HomophoneCard.is-partial .HomophoneCard__indicator {
+  background-color: #b58900;
+}
+
+/* COMPLETED */
+.HomophoneCard:not(.is-empty):not(.is-partial):hover {
+  border-color: #000000;
+}
+
+.HomophoneCard__indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.HomophoneCard__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
-.SetTitle {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  color: #adb5bd;
+.HomophoneCard__title {
+  font-size: 1.125rem;
+  font-weight: 800;
   margin: 0;
 }
 
-/* --- 2x2 GRID-- */
-.WordGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns */
-  gap: 12px;
-  margin-bottom: 10px;
+.HomophoneCard__delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #8c8c8c;
+  cursor: pointer;
+  line-height: 1;
 }
 
-.WordWrapper {
+.HomophoneCard__delete-btn:hover {
+  color: #a30013;
+}
+
+
+.HomophoneCard__word-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.WordInputWrapper {
   position: relative;
 }
 
-.WordBox {
+.WordInputWrapper__input {
   width: 100%;
-  box-sizing: border-box;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  text-align: center;
-  outline: none;
-  transition: all 0.2s;
-  border: 1px solid #dee2e6;
 }
 
-/* text box empty */
-.WordBox.empty {
-  background: #fcfcfc;
-  border-style: dashed;
-  color: #adb5bd;
-}
-
-/* text box has a word */
-.WordBox.active {
-  background: #f1f3f5;
-  border-style: solid;
-  color: #212529;
-  font-weight: 500;
-}
-
-
-.WordBox:focus {
-  border-color: #007fff;
-  background: #ffffff;
-  border-style: solid;
-  box-shadow: 0 0 0 3px rgba(0, 127, 255, 0.1);
-}
-
-/* --- ACTIONN BUTTONS --- */
-.DeleteWordBtn {
+.WordInputWrapper__clear {
   position: absolute;
-  top: -6px;
-  right: -6px;
-  background: #dc3545;
-  color: white;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  background: #a30013;
+  color: #ffffff;
   border: none;
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  font-size: 10px;
+  font-size: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: opacity 0.2s;
-  z-index: 2;
 }
 
-.WordWrapper:hover .DeleteWordBtn {
+.WordInputWrapper:hover .WordInputWrapper__clear {
   opacity: 1;
 }
 
-.DeleteSetBtn {
+/* SENTENCE STUFF */
+.HomophoneCard__sentences {
+  border-top: 1px solid #f2f2f2;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.HomophoneCard__label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #404040;
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
+.HomophoneCard__textarea {
+  width: 100%;
+  min-height: 54px;
+  padding: 8px 10px;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  resize: none;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.HomophoneCard__textarea:focus {
+  border-color: #007fff;
+  border-width: 2px;
+  padding: 7px 9px;
+}
+
+/* ERRORS */
+.HomophoneCard__errors {
+  margin-top: 12px;
+}
+
+.HomophoneCard__error-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #a30013;
+  margin: 4px 0 0;
+}
+
+.HomophonesPage__add-btn {
+  min-height: 340px; 
+  border: 2px dashed #cccccc;
+  border-radius: 8px;
   background: transparent;
-  border: none;
-  color: #ced4da;
-  font-size: 1.2rem;
+  color: #595959;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s;
+  transition: all 0.2s ease;
 }
 
-.DeleteSetBtn:hover {
-  color: #dc3545;
-}
-
-.AddSetButton {
-  height: auto;
-  min-height: 165px; /* Matches card height */
-  align-self: start;
-  background: transparent;
-  border: 2px dashed #ced4da;
-  border-radius: 12px;
-  color: #adb5bd;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.AddSetButton:not(:disabled):hover {
-  background: #ffffff;
+.HomophonesPage__add-btn:hover:not(:disabled) {
   border-color: #007fff;
   color: #007fff;
+  background-color: #f7f9ff;
 }
 
-.AddSetButton:disabled {
+.HomophonesPage__add-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.ValidationWrapper {
-  margin-top: auto;
-  min-height: 20px;
+/*  SCROLLBAR */
+.HomophonesPage__list::-webkit-scrollbar {
+  width: 8px;
 }
 
-.ErrorText { color: #dc3545; font-size: 0.7rem; font-weight: bold; margin-top: 5px; }
-.WarningText { color: #856404; font-size: 0.7rem; margin-top: 5px; }
-
-/* --- SCROLLBAR --- */
-.HomophonesList::-webkit-scrollbar { width: 6px; }
-.HomophonesList::-webkit-scrollbar-thumb { background: #dee2e6; border-radius: 10px; }
-
-
-
-/* --- HEADER STUFF --- */
-.HeaderLeft {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.HomophonesPage__list::-webkit-scrollbar-thumb {
+  background: #e5e5e5;
+  border-radius: 10px;
 }
 
-.ViewToggle {
-  background: #e9ecef;
-  border: 1px solid #dee2e6;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: #495057;
-}
-
-.ViewToggle.active {
-  background: #007fff;
-  color: white;
-  border-color: #0056b3;
-}
-
-/* --- INCOMPLETE WARNING--- */
-.HomophoneSet.incomplete {
-  border-left: 4px solid #856404; /* Maybe I should change the colour */
-}
-
-/* --- SENTENCE MODE--- */
-.SentenceList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.SentenceInput {
-  width: 100%;
-  min-height: 60px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #dee2e6;
-  background: #fcfcfc;
-  font-size: 0.85rem;
-  font-family: inherit;
-  resize: none;
-  transition: border-color 0.2s;
-}
-
-.SentenceInput:focus {
-  border-color: #007fff;
-  background: white;
-  outline: none;
-}
-
-/* MAKES THE ENTIRE GRID RESPONSIVE, Delete this if you don't like the stretching. I think its ok.*/
-.HomophonesList {
-  align-items: stretch; 
+.HomophonesPage__list::-webkit-scrollbar-thumb:hover {
+  background: #cccccc;
 }
