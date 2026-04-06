@@ -1,23 +1,24 @@
 import clsx from "clsx";
+import * as React from "react";
 import { Link, type To } from "react-router";
 
 import "./PageHeader.css";
 
-export type PageHeaderIcon = "back" | "close";
+export type BackButtonIcon = "back" | "close";
 
-export function PageHeader({
+export function BackButton({
   className,
-  backIcon = "back",
-  backLabel = "Back",
-  backLinkTo,
+  linkTo,
+  icon = "back",
+  children = "Back",
 }: {
   className?: string;
-  backIcon?: PageHeaderIcon;
-  backLabel?: string;
-  backLinkTo: To;
+  linkTo: To;
+  icon?: BackButtonIcon;
+  children?: React.ReactNode;
 }) {
   let iconCharacter: string;
-  switch (backIcon) {
+  switch (icon) {
     case "back":
       iconCharacter = "←";
       break;
@@ -25,15 +26,23 @@ export function PageHeader({
       iconCharacter = "×";
       break;
     default:
-      throw new Error(`Invalid icon '${backIcon}'`);
+      throw new Error(`Invalid icon '${icon}'`);
   }
 
   return (
-    <header className={clsx("PageHeader", className)}>
-      <Link className="PageHeader__back-link" to={backLinkTo}>
-        <span className="PageHeader__back-icon">{iconCharacter}</span>
-        <span className="PageHeader__back-label">{backLabel}</span>
-      </Link>
-    </header>
+    <Link className={clsx("BackButton", className)} to={linkTo}>
+      <span className="BackButton__icon">{iconCharacter}</span>
+      <span className="BackButton__label">{children}</span>
+    </Link>
   );
+}
+
+export function PageHeader({
+  className,
+  children,
+}: {
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  return <header className={clsx("PageHeader", className)}>{children}</header>;
 }
