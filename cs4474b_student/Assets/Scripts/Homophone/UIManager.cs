@@ -112,9 +112,19 @@ public class UIManager : MonoBehaviour
 
     public void ShowEndScreen()
     {
+        // hide all spawned cards
+        foreach (var c in _spawnedCards) Destroy(c);
+        _spawnedCards.Clear();
+
+        // hide sentence line and drop zone
+        sentenceLine.gameObject.SetActive(false);
+        wordTray.gameObject.SetActive(false);
+        feedbackPanel.SetActive(false);
+        
         endScreen.SetActive(true);
         if (finalScoreText != null){}
             finalScoreText.text = $"Awesome!\nYou got {_score} out of {_totalAttainable} points!";
+        
     }
     
     public void mainMenu()

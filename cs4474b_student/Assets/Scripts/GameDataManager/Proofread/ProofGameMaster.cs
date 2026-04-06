@@ -34,6 +34,8 @@ public class ProofGameMaster : MonoBehaviour
     public static event Action GetData;
     public HorizontalLayoutGroup board;
 
+    [SerializeField] private GameObject titleText;
+
     public void RequestData()
     {
         GetData.Invoke();   
@@ -99,6 +101,7 @@ public class ProofGameMaster : MonoBehaviour
         for (int i = 0; i < given_words.Count; i++)
             CalcResults(i);
 
+        titleText.SetActive(false);
         resultsScreen.SetActive(true);
 
         correctText.text = (identified_and_correct.Count == 0 ? "None" :
@@ -150,6 +153,7 @@ public class ProofGameMaster : MonoBehaviour
 
     public void Setup()
     {
+        titleText.SetActive(true);
         given_words = GetWords(provided_text);
         correct_words = GetWords(correct_text);
         current_words = new List<string>(given_words); // initialize current_words

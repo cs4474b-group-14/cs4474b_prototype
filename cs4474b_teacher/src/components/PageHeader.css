@@ -1,0 +1,43 @@
+.PageHeader {
+  display: flex;
+  flex-direction: row;
+
+  height: 48px;
+  padding: 8px 12px;
+}
+
+.PageHeader__back-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  min-height: 32px;
+  padding: 4px;
+  gap: 8px;
+
+  background-color: oklch(1 0 0);
+  color: oklch(0 0 0);
+  border-radius: 4px;
+
+  text-decoration: none;
+
+  &:hover {
+    background-color: oklch(0.95 0 0);
+  }
+
+  &:active {
+    background-color: oklch(0.85 0 0 );
+  }
+}
+
+.PageHeader__back-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 24px;
+
+  text-align: center;
+
+  user-select: none;
+}

@@ -1,18 +1,16 @@
 .OverviewPage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
   height: 100%;
-  padding: 48px 24px;
-  gap: 48px;
 }
 .OverviewPage__content {
   display: flex;
   flex-direction: column;
+  align-self: center;
+  margin: auto;
 
   gap: 32px;
+  padding: 24px;
 
   width: 320px;
 }
