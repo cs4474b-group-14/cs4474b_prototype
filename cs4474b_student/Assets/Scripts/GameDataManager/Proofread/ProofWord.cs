@@ -12,6 +12,7 @@ public class ProofWord : MonoBehaviour
     public string initial_spelling; //initial provided spelling
     public string current_spelling; //initialized to initial_spelling, may be changed by student
     public float char_size; // size of each character in the word, assumes monospacing
+    public TMP_Text original_reference;
 
     void Awake()
     {
@@ -46,6 +47,10 @@ public class ProofWord : MonoBehaviour
 
         //hide input field
         input_field.gameObject.SetActive(false);
+
+        //setup original text reference
+        original_reference.text = initial_spelling;
+        original_reference.gameObject.SetActive(false);
     }
 
     public void BeginEdit()
@@ -53,6 +58,7 @@ public class ProofWord : MonoBehaviour
         //reveal input field
         input_field.gameObject.SetActive(true);
         input_field.ActivateInputField();
+        original_reference.gameObject.SetActive(true);
     }
 
     public void ConfirmEdit()
@@ -81,6 +87,8 @@ public class ProofWord : MonoBehaviour
 
         //hide input field
         input_field.gameObject.SetActive(false);
+        //hide original text
+        original_reference.gameObject.SetActive(false);
     }
 
     public void GiveData()
