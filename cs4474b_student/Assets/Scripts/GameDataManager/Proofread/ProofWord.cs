@@ -6,6 +6,7 @@ public class ProofWord : MonoBehaviour
 {
     private ProofGameMaster GAME_MASTER;
     public int MY_INDEX; // was static int
+    public ProofUndo UNDO_HISTORY;
     public Button button;
     public TMP_Text button_text;
     public TMP_InputField input_field;
@@ -34,6 +35,7 @@ public class ProofWord : MonoBehaviour
     {
         GAME_MASTER = master;
         MY_INDEX = index;
+        UNDO_HISTORY = FindObjectOfType<ProofUndo>(); // idk if this will work lol
 
         initial_spelling = init_spelling;
         current_spelling = curr_spelling;
@@ -63,6 +65,7 @@ public class ProofWord : MonoBehaviour
 
     public void ConfirmEdit()
     {
+        string prev_spelling = current_spelling;
         current_spelling = input_field.text;
         button_text.text = current_spelling;
 
@@ -89,6 +92,7 @@ public class ProofWord : MonoBehaviour
         input_field.gameObject.SetActive(false);
         //hide original text
         original_reference.gameObject.SetActive(false);
+        UNDO_HISTORY.RecordEdit(gameObject.GetComponent<ProofWord>(), current_spelling, prev_spelling);
     }
 
     public void GiveData()
@@ -103,5 +107,24 @@ public class ProofWord : MonoBehaviour
 
         button.GetComponent<RectTransform>().sizeDelta = new Vector2(preferredWidth, height);
         input_field.GetComponent<RectTransform>().sizeDelta = new Vector2(preferredWidth, height);
+    }
+
+    public void Remote_Update(string updated)
+    {
+        current_spelling = updated;
+        input_field.gameObject.SetActive(true);
+        input_field.text = current_spelling;
+        button_text.text = current_spelling;
+        if(current_spelling == initial_spelling)
+        {
+            button_text.color = new Color(0f, 0f, 0f, 1f);
+        }
+        else
+        {
+            button_text.color = new Color(1f, 0.5f, 0f);
+        }
+        input_field.gameObject.SetActive(false);
+
+        Dynamic_Resize();
     }
 }
