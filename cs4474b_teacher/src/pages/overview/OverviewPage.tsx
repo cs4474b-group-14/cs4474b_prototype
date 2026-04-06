@@ -6,6 +6,7 @@ import type { GameSet } from "../../types/games";
 import "./OverviewPage.css";
 
 import { Button } from "../../components/Button";
+import { PageHeader } from "../../components/PageHeader";
 import { TextInput } from "../../components/TextInput";
 
 function Metadata({
@@ -102,6 +103,13 @@ export function OverviewPage({
 
   return (
     <div className="OverviewPage">
+      {/* TODO: Add confirmation before closing game set */}
+      <PageHeader
+        className="OverviewPage__header"
+        backIcon="close"
+        backLabel="Close"
+        backLinkTo="/"
+      />
       <main className="OverviewPage__content">
         <Metadata gameSet={gameSet} onGameSetChange={onGameSetChange} />
         <GameOverviews gameSet={gameSet} />
