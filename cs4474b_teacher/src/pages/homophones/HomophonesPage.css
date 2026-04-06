@@ -31,8 +31,8 @@
 
 
 .HomophoneCard {
-  background: #ffffff;
-  border: 1px solid #d9d9d9;
+  background: #fafafa;
+  border: 1px solid #cccccc;
   border-radius: 8px;
   padding: 20px;
   position: relative;
@@ -53,11 +53,6 @@
 
 .HomophoneCard.is-partial .HomophoneCard__indicator {
   background-color: #b58900;
-}
-
-/* COMPLETED */
-.HomophoneCard:not(.is-empty):not(.is-partial):hover {
-  border-color: #000000;
 }
 
 .HomophoneCard__indicator {
