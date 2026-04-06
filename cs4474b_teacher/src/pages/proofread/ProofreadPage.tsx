@@ -123,15 +123,12 @@ export function ProofreadPage({
 
   return (
     <div className="ProofReadPage">
-      <div className="ProofReadPage__header">
-        <PageHeader className="OverviewPage__header">
-          <BackButton icon="back" linkTo="/">
-            Back
-          </BackButton>
-        </PageHeader>
-
-        <h1 className="ProofReadPage__title">Proofread Games</h1>
-      </div>
+      <PageHeader className="ProofReadPage__header">
+        <BackButton icon="back" linkTo="/edit">
+          {gameSet.name ?? "Back"}
+        </BackButton>
+      </PageHeader>
+      <h1 className="ProofReadPage__title">Proofread Games</h1>
 
       <div className="ProofReadPage__layout">
         <section className="ProofReadPage__panel">

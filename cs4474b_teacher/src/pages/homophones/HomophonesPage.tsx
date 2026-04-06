@@ -144,7 +144,7 @@ export function HomophonesPage({
     <div className="HomophonesPage">
       <PageHeader className="HomophonesPage__header">
         <BackButton linkTo="/edit" className="HomophonesPage__back-btn">
-          My Cool Word List
+          {gameSet.name ?? "Back"}
         </BackButton>
         {/* Only show clear all if there are actually sets to clear*/}
         {sets.length > 0 && (
