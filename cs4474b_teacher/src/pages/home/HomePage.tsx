@@ -36,7 +36,7 @@ export function HomePage() {
           variant="secondary"
           onClick={() => filePickerRef.current?.click()}
         >
-          Edit existing game set
+          Open existing game set
         </Button>
         {/* This will be hidden by CSS and triggered by the above button */}
         <input
