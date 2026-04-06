@@ -52,6 +52,7 @@ public class ProofWord : MonoBehaviour
     {
         //reveal input field
         input_field.gameObject.SetActive(true);
+        input_field.ActivateInputField();
     }
 
     public void ConfirmEdit()

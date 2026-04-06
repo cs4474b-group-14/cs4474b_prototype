@@ -11,8 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33396aad-077f-4bec-93b9-4d9cd431abfe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.cs4474b_student/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.cs4474b_student/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Draggable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Draggable.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Word.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Word.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Proofread.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Proofread.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/ProofGameMaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/ProofGameMaster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/homophonesScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/homophonesScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/ProofWord.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/ProofWord.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Homophone/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Homophone/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +28,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/proof_setup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameDataManager/Proofread/ButtonCursorHover.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -102,7 +107,7 @@
       <workItem from="1775327668295" duration="2000" />
       <workItem from="1775327861885" duration="10986000" />
       <workItem from="1775410732542" duration="191000" />
-      <workItem from="1775444739355" duration="6263000" />
+      <workItem from="1775444739355" duration="10146000" />
     </task>
     <servers />
   </component>

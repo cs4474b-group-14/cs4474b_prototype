@@ -11,7 +11,9 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [Header("Sentence")]
-    [SerializeField] private TextMeshProUGUI sentenceText;
+    [SerializeField] private TextMeshProUGUI sentenceTextBefore; // text before the blank
+    [SerializeField] private TextMeshProUGUI sentenceTextAfter;  // text after the blank
+    [SerializeField] private RectTransform sentenceLine;         // horizontal container
 
     [Header("Drop Zone")]
     [SerializeField] private DropZone dropZone;
@@ -43,8 +45,12 @@ public class UIManager : MonoBehaviour
 
     public void DisplayQuestion(HomophoneQuestion q)
     {
-        sentenceText.text = q.sentence.Replace("_", "<color=#0069FF><u>_____</u></color>");
+        string[] parts = q.sentence.Split(new string[] { "___" }, System.StringSplitOptions.None);
 
+        sentenceTextBefore.text = parts[0].TrimEnd();
+        sentenceTextAfter.text = parts.Length > 1 ? parts[1].TrimStart() : "";
+
+        // rest of your existing card spawning code unchanged
         foreach (var c in _spawnedCards) Destroy(c);
         _spawnedCards.Clear();
 
@@ -69,6 +75,7 @@ public class UIManager : MonoBehaviour
         dropZone.Reset();
         feedbackPanel.SetActive(false);
         UpdateHUD();
+        UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(sentenceLine);
     }
 
     public void ShowFeedback(bool correct, int points)
