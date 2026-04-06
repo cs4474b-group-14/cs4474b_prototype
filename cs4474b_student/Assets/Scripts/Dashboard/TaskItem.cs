@@ -31,6 +31,8 @@ public class TaskItem : MonoBehaviour
     [SerializeField] Sprite homophonesImage;
     [SerializeField] Sprite transcriptionImage;
 
+    private string gameName;
+
     private void Start()
     {
         // check if this game was just completed
@@ -48,25 +50,30 @@ public class TaskItem : MonoBehaviour
         {
             case GameType.proofread:
                 image.sprite = proofreadImage;
+                gameName = "Proofread";
                 break;
             case GameType.homophones:
                 image.sprite = homophonesImage;
+                gameName = "Homophones";
                 break;
             case GameType.transcription:
                 image.sprite = transcriptionImage;
+                gameName = "Transcription";
                 break;
             default:
                 image.sprite = null;
+                gameName = "";
                 break;
         }
 
         if (isComplete)
         {
-            textfield.text = $"Task #{taskIndex}: DONE";
+            textfield.text = $"Task #{taskIndex}: {gameName}\nCOMPLETE";
+            GetComponent<UnityEngine.UI.Image>().color = new Color(25 / 255f, 185 / 255f, 25 / 255f, 1f);
         }
         else 
         {
-            textfield.text = $"Task #{taskIndex}: TODO";
+            textfield.text = $"Task #{taskIndex}: {gameName}\nINCOMPLETE";
         }
     }
 

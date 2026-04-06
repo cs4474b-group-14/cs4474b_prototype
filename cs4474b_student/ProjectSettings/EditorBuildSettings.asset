@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/homophonesScene.unity
     guid: 87d22fdef7804244da828db014102a70
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: c65d0a7c4c81208459b426a5f09fee9a
   m_configObjects: {}
