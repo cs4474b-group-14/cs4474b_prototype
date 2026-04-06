@@ -10,6 +10,7 @@ export type TranscriptionGame = {
 
 export type HomophoneGame = {
   words: string[];
+  exampleSentences: string[];
 };
 
 export type GameSet = {
