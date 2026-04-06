@@ -5,5 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class TranscriptionData
 {
-    public int errorCount;
+    public string word = "rhapsody";
+    public AudioClip audio;
 }
