@@ -22,10 +22,27 @@
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+
+  --accent-color: #006fef;
+  --accent-text-color: #ffffff;
 }
 
 * {
   box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 1px;
+}
+
+::selection {
+  background-color: var(--accent-color);
+  color: var(--accent-text-color);
+}
+/* Chromium only */
+::selection:window-inactive {
+  background-color: oklch(from var(--accent-color) l 0 0);
 }
 
 html,

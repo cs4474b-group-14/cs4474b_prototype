@@ -50,16 +50,11 @@
     --button-current-color: oklch(from var(--button-color) calc(l - 0.15) c h);
     --button-gradient-direction: to top;
   }
-
-  &:focus-visible {
-    outline: 2px solid #007fff;
-    outline-offset: 1px;
-  }
 }
 
 .Button--primary {
-  --button-color: #007fff;
-  --button-text-color: #ffffff;
+  --button-color: var(--accent-color);
+  --button-text-color: var(--accent-text-color);
 }
 
 .Button--large {
