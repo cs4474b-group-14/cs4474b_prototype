@@ -36,7 +36,15 @@ export function App() {
     <ErrorBoundary FallbackComponent={Error}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage onLoadGameSet={setGameSet} />} />
+          <Route
+            path="/"
+            element={
+              <HomePage
+                gameSet={gameSet ?? undefined}
+                onGameSetChange={setGameSet}
+              />
+            }
+          />
           {/* TODO: Figure out how to make this less repetitive */}
           <Route
             path="/edit"

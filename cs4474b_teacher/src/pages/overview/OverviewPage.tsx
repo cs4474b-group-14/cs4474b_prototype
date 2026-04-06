@@ -1,13 +1,10 @@
-import clsx from "clsx";
-import { Link, type To } from "react-router";
-
-import type { GameSet } from "../../types/games";
-
-import "./OverviewPage.css";
-
+import { ArrowLink } from "../../components/ArrowLink";
 import { Button } from "../../components/Button";
 import { BackButton, PageHeader } from "../../components/PageHeader";
 import { TextInput } from "../../components/TextInput";
+import type { GameSet } from "../../types/games";
+
+import "./OverviewPage.css";
 
 function Metadata({
   gameSet,
@@ -34,43 +31,23 @@ function Metadata({
   );
 }
 
-function GameOverview({
-  className,
-  title,
-  subtitle,
-  linkTo,
-}: {
-  className?: string;
-  title: string;
-  subtitle: string;
-  linkTo: To;
-}) {
-  return (
-    <Link className={clsx("GameOverview", className)} to={linkTo}>
-      <h2 className="GameOverview__title">{title}</h2>
-      <p className="GameOverview__subtitle">{subtitle}</p>
-      <span className="GameOverview__arrow">→</span>
-    </Link>
-  );
-}
-
 function GameOverviews({ gameSet }: { gameSet: GameSet }) {
   return (
     <div className="GameOverviews">
-      <GameOverview
+      <ArrowLink
         title="Proofread"
         subtitle={`${gameSet.proofreadGames.length} paragraphs`}
-        linkTo="/edit/proofread"
+        to="/edit/proofread"
       />
-      <GameOverview
+      <ArrowLink
         title="Homophones"
         subtitle={`${gameSet.homophoneGames.length} homophone sets`}
-        linkTo="/edit/homophones"
+        to="/edit/homophones"
       />
-      <GameOverview
+      <ArrowLink
         title="Transcription"
         subtitle={`${gameSet.transcriptionGames.length} words with audio`}
-        linkTo="/edit/transcription"
+        to="/edit/transcription"
       />
     </div>
   );

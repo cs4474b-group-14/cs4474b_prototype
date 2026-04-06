@@ -1,0 +1,45 @@
+.ArrowLink {
+  display: grid;
+  grid-template:
+    "title    arrow" auto
+    "subtitle arrow" auto
+    / 1fr auto;
+
+  column-gap: 16px;
+
+  background-color: oklch(1 0 0 0);
+  color: #000000;
+
+  padding: 12px 16px;
+  border-radius: 4px;
+
+  text-decoration: none;
+
+  &:hover {
+    background-color: oklch(0.95 0 0);
+  }
+
+  &:active {
+    background-color: oklch(0.85 0 0);
+  }
+}
+.ArrowLink__title {
+  grid-area: title;
+  margin: 0;
+}
+.ArrowLink__subtitle {
+  grid-area: subtitle;
+  margin: 0;
+}
+.ArrowLink__arrow {
+  grid-area: arrow;
+  align-self: center;
+
+  display: block;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 24px;
+
+  user-select: none;
+}

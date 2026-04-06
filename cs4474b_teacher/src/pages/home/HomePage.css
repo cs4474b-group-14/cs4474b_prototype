@@ -5,7 +5,15 @@
   align-items: center;
 
   height: 100%;
-  padding: 48px 24px;
+}
+
+.HomePage__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  padding: 24px;
   gap: 48px;
 }
 
@@ -15,12 +23,17 @@
   font-size: 2.5rem;
   font-weight: bold;
   font-style: italic;
+  text-align: center;
 }
 
 .HomePage__buttons {
   display: flex;
   flex-direction: row;
   gap: 16px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
 }
 
 .HomePage__file-picker {
