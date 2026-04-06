@@ -6,6 +6,8 @@ import type { GameSet, HomophoneGame } from "../../types/games";
 
 import "./HomophonesPage.css";
 
+import { BackButton, PageHeader } from "../../components/PageHeader";
+
 interface HomophonesPageProps {
   gameSet: GameSet;
   onGameSetChange: (gameSet: GameSet) => void;
@@ -142,18 +144,17 @@ export function HomophonesPage({
 
   return (
     <div className="HomophonesPage">
-      <header className="HomophonesPage__header">
-        <Link to="/edit" className="HomophonesPage__back-btn">
-          <span style={{ fontWeight: 900, marginRight: "8px" }}>←</span>
+      <PageHeader className="HomophonesPage__header">
+        <BackButton linkTo="/edit" className="HomophonesPage__back-btn">
           My Cool Word List
-        </Link>
+        </BackButton>
         {/* Only show clear all if there are actually sets to clear*/}
         {sets.length > 0 && (
           <Button onClick={clearAllSets} size="normal" variant="secondary">
             Clear All Sets
           </Button>
         )}
-      </header>
+      </PageHeader>
 
       <main className="HomophonesPage__list">
         {sets.map((set, index) => {
