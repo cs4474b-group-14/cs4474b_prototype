@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 import type { GameSet } from "../../types/games";
 
 function Metadata() {
@@ -36,6 +38,18 @@ export function OverviewPage({
     <div className="OverviewPage">
       <Metadata />
       <GameOverviews gameSet={gameSet} onGameSetChange={onGameSetChange} />
+      {/* TODO: very placeholder */}
+      <ul>
+        <li>
+          <Link to="/edit/proofread">Placeholder link: Proofread</Link>
+        </li>
+        <li>
+          <Link to="/edit/transcription">Placeholder link: Transcription</Link>
+        </li>
+        <li>
+          <Link to="/edit/homophones">Placeholder link: Homophones</Link>
+        </li>
+      </ul>
     </div>
   );
 }
