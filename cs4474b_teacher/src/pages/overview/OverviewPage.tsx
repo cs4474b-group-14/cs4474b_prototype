@@ -7,8 +7,30 @@ import "./OverviewPage.css";
 
 import { Button } from "../../components/Button";
 
-function Metadata() {
-  return <div className="Metadata"></div>;
+function Metadata({
+  gameSet,
+  onGameSetChange = () => {},
+}: {
+  gameSet: GameSet;
+  onGameSetChange: (gameSet: GameSet) => void;
+}) {
+  return (
+    <div className="Metadata">
+      <label className="Metadata__field">
+        <span className="Metadata__label">Name</span>
+        <input
+          type="text"
+          value={gameSet.name ?? ""}
+          onChange={(e) =>
+            onGameSetChange({
+              ...gameSet,
+              name: e.target.value,
+            })
+          }
+        ></input>
+      </label>
+    </div>
+  );
 }
 
 function GameOverview({
@@ -44,6 +66,11 @@ function GameOverviews({ gameSet }: { gameSet: GameSet }) {
         subtitle={`${gameSet.homophoneGames.length} homophone sets`}
         linkTo="/edit/homophones"
       />
+      <GameOverview
+        title="Transcription"
+        subtitle={`${gameSet.transcriptionGames.length} words with audio`}
+        linkTo="/edit/transcription"
+      />
     </div>
   );
 }
@@ -58,9 +85,11 @@ export function OverviewPage({
   return (
     <div className="OverviewPage">
       <main className="OverviewPage__content">
-        <Metadata />
+        <Metadata gameSet={gameSet} onGameSetChange={onGameSetChange} />
         <GameOverviews gameSet={gameSet} />
-        <Button variant="primary" size="large">Download</Button>
+        <Button variant="primary" size="large">
+          Download
+        </Button>
       </main>
     </div>
   );

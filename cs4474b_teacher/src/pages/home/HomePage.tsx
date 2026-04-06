@@ -2,7 +2,7 @@ import * as React from "react";
 import { useNavigate } from "react-router";
 
 import { Button } from "../../components/Button";
-import { EMPTY_GAME_SET, type GameSet } from "../../types/games";
+import { NEW_GAME_SET, type GameSet } from "../../types/games";
 
 import "./HomePage.css";
 
@@ -15,7 +15,7 @@ export function HomePage({
   const filePickerRef = React.useRef<HTMLInputElement | null>(null);
 
   const handleNew = () => {
-    onLoadGameSet(EMPTY_GAME_SET);
+    onLoadGameSet(NEW_GAME_SET);
     navigate("/edit");
   };
   const handleOpen = async (

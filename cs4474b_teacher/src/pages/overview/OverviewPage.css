@@ -9,7 +9,18 @@
   gap: 48px;
 }
 .OverviewPage__content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 48px;
+
   width: 320px;
+}
+
+.Metadata__field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .GameOverviews {
