@@ -1,0 +1,62 @@
+.Button {
+  /* Base color: */
+  --button-color: #cccccc;
+  --button-text-color: #000000;
+  --button-gradient-direction: to bottom;
+  /* Derived colors: */
+  --button-gradient-highlight: oklch(
+    from var(--button-color) calc(l + 0.025) c h
+  );
+  --button-gradient-shadow: oklch(from var(--button-color) calc(l - 0.025) c h);
+  --button-border: oklch(from var(--button-color) calc(l * 0.65) c h);
+
+  appearance: none;
+  background-image: linear-gradient(
+    var(--button-gradient-direction),
+    var(--button-gradient-highlight),
+    var(--button-gradient-shadow)
+  );
+  background-color: var(--button-color);
+  border: 1px solid var(--button-border);
+  border-radius: 4px;
+
+  min-height: 36px;
+  min-width: 128px;
+  padding: 2px 8px;
+
+  font-size: 0.875rem;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  &:hover {
+    --button-color: #bbbbbb;
+  }
+
+  &:active {
+    --button-color: #aaaaaa;
+    background-image: linear-gradient(
+      to bottom,
+      var(--button-gradient-shadow),
+      var(--button-gradient-highlight)
+    );
+  }
+
+  &:focus-visible {
+    outline: 2px solid #007fff;
+    outline-offset: 1px;
+  }
+}
+
+.Button--primary {
+  --button-color: #007fff;
+  color: #ffffff;
+
+  &:hover {
+    --button-color: #006fdf;
+  }
+
+  &:active {
+    --button-color: #005fcf;
+  }
+}

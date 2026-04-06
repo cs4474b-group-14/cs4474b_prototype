@@ -1,18 +1,24 @@
 import clsx from "clsx";
 import * as React from "react";
 
+import { Button } from "./Button";
+
 import "./Counter.css";
 
 // Example component to demonstrate coding conventions
-export const Counter = ({ className = "" }: { className?: string }) => {
+export const Counter = ({ className }: { className?: string }) => {
   const [count, setCount] = React.useState(0);
 
   return (
     <div className={clsx("Counter", className)}>
       <p className="Counter__text">Count is {count}</p>
-      <button className="Counter__button" onClick={() => setCount(count + 1)}>
+      <Button
+        className="Counter__button"
+        variant="primary"
+        onClick={() => setCount(count + 1)}
+      >
         Increment
-      </button>
+      </Button>
     </div>
   );
 };
