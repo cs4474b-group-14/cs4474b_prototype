@@ -5,14 +5,19 @@ import { Button } from "../../components/Button";
 
 import "./HomePage.css";
 
-export function HomePage() {
+import { EMPTY_GAME_SET, type GameSet } from "../../types/games";
+
+export function HomePage({
+  onLoadGameSet = () => {},
+}: {
+  onLoadGameSet?: (gameSet: GameSet) => void;
+}) {
   const navigate = useNavigate();
   const filePickerRef = React.useRef<HTMLInputElement | null>(null);
 
-  const handleNew = (
-    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
-  ) => {
-    console.log("new", e);
+  const handleNew = () => {
+    onLoadGameSet(EMPTY_GAME_SET);
+    navigate("/edit");
   };
   const handleOpen = (
     e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,

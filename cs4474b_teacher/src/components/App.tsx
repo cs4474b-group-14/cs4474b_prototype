@@ -26,7 +26,7 @@ export function App() {
     <ErrorBoundary FallbackComponent={Error}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage onLoadGameSet={setGameSet} />} />
           <Route
             path="/edit"
             element={

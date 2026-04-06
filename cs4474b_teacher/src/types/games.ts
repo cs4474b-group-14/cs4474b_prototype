@@ -18,3 +18,10 @@ export type GameSet = {
   homophoneGames: TranscriptionGame[];
   prioritizedWords: string[];
 };
+
+export const EMPTY_GAME_SET: GameSet = {
+  proofreadGames: [],
+  transcriptionGames: [],
+  homophoneGames: [],
+  prioritizedWords: [],
+};
