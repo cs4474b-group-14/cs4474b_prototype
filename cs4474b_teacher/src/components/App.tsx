@@ -23,7 +23,14 @@ function Error({ error }: FallbackProps) {
 }
 
 export function App() {
-  const [gameSet, setGameSet] = React.useState<GameSet>();
+  // Save last known game set in local storage to prevent losing data
+  const [gameSet, setGameSet] = React.useState<GameSet | null>(() => {
+    const json = localStorage.getItem("autosavedGameSet") ?? "null";
+    return JSON.parse(json) as GameSet | null;
+  });
+  React.useEffect(() => {
+    localStorage.setItem("autosavedGameSet", JSON.stringify(gameSet));
+  }, [gameSet]);
 
   return (
     <ErrorBoundary FallbackComponent={Error}>
