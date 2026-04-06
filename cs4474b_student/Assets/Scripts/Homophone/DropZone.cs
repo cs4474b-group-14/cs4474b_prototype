@@ -42,12 +42,12 @@ public class DropZone : MonoBehaviour, IDropHandler
     {
         if (correct)
         {
-            StartCoroutine(card.Flash(Color.green, 1.5f));
+            StartCoroutine(card.Flash(new Color(25/255f, 185/255f, 25/255f, 1f), 1.5f));
             zoneImage.color = correctColor;
         }
         else
         {
-            StartCoroutine(card.Flash(Color.red, 0.5f));
+            StartCoroutine(card.Flash(new Color(219/255f, 55/255f, 55/255f, 1), 0.5f));
             zoneImage.color = wrongColor;
             yield return new WaitForSeconds(0.5f);
             _currentCard = null;

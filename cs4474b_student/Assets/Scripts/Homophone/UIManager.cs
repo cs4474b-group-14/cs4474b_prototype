@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour
         if (correct) _score += points;
         feedbackPanel.SetActive(true);
         feedbackText.text = correct
-            ? (points == 10 ? "Perfect!\n+10" : "Correct!\n+5")
+            ? (points == 10 ? "Perfect!\n+10 points" : "Correct!\n+5 points")
             : "Try again!";
         feedbackText.color = correct ? new Color(25/255f, 185/255f, 25/255f, 1f) : new Color(219/255f, 55/255f, 55/255f, 1);
         UpdateHUD();
@@ -106,8 +106,8 @@ public class UIManager : MonoBehaviour
     public void ShowEndScreen()
     {
         endScreen.SetActive(true);
-        if (finalScoreText != null)
-            finalScoreText.text = $"You got {_score} out of {_totalAttainable} points!";
+        if (finalScoreText != null){}
+            finalScoreText.text = $"Awesome!\nYou got {_score} out of {_totalAttainable} points!";
     }
     
     public void mainMenu()
