@@ -2,10 +2,9 @@ import * as React from "react";
 import { useNavigate } from "react-router";
 
 import { Button } from "../../components/Button";
+import { EMPTY_GAME_SET, type GameSet } from "../../types/games";
 
 import "./HomePage.css";
-
-import { EMPTY_GAME_SET, type GameSet } from "../../types/games";
 
 export function HomePage({
   onLoadGameSet = () => {},
