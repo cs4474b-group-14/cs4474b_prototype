@@ -2,13 +2,17 @@
   /* Base color: */
   --button-color: #cccccc;
   --button-text-color: #000000;
+
+  /* Derived colors and state: */
+  --button-current-color: var(--button-color);
   --button-gradient-direction: to bottom;
-  /* Derived colors: */
   --button-gradient-highlight: oklch(
-    from var(--button-color) calc(l + 0.025) c h
+    from var(--button-current-color) calc(l + 0.025) c h
   );
-  --button-gradient-shadow: oklch(from var(--button-color) calc(l - 0.025) c h);
-  --button-border: oklch(from var(--button-color) calc(l * 0.65) c h);
+  --button-gradient-shadow: oklch(
+    from var(--button-current-color) calc(l - 0.025) c h
+  );
+  --button-border: oklch(from var(--button-current-color) calc(l * 0.65) c h);
 
   appearance: none;
   background-image: linear-gradient(
@@ -16,7 +20,7 @@
     var(--button-gradient-highlight),
     var(--button-gradient-shadow)
   );
-  background-color: var(--button-color);
+  background-color: var(--button-current-color);
   color: var(--button-text-color);
   border: 1px solid var(--button-border);
   border-radius: 4px;
@@ -39,16 +43,12 @@
   cursor: pointer;
 
   &:hover {
-    --button-color: #bbbbbb;
+    --button-current-color: oklch(from var(--button-color) calc(l - 0.05) c h);
   }
 
   &:active {
-    --button-color: #aaaaaa;
-    background-image: linear-gradient(
-      to bottom,
-      var(--button-gradient-shadow),
-      var(--button-gradient-highlight)
-    );
+    --button-current-color: oklch(from var(--button-color) calc(l - 0.15) c h);
+    --button-gradient-direction: to top;
   }
 
   &:focus-visible {
@@ -60,12 +60,4 @@
 .Button--primary {
   --button-color: #007fff;
   --button-text-color: #ffffff;
-
-  &:hover {
-    --button-color: #006fdf;
-  }
-
-  &:active {
-    --button-color: #005fcf;
-  }
 }
