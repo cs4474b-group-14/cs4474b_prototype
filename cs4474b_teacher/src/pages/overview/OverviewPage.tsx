@@ -76,7 +76,15 @@ export function OverviewPage({
   onGameSetChange: (gameSet: GameSet) => void;
 }) {
   const handleDownload = () => {
-    const json = JSON.stringify(gameSet);
+    const fixedGameSet: GameSet = {
+      ...gameSet,
+      homophoneGames: gameSet.homophoneGames.map((game) => ({
+        id: game.id,
+        words: game.words.filter((w) => w.trim() !== ""),
+        exampleSentences: game.exampleSentences.filter((s) => s.trim() !== ""),
+      })),
+    };
+    const json = JSON.stringify(fixedGameSet);
 
     // https://coreui.io/answers/how-to-download-a-file-in-javascript/
     const blob = new Blob([json], { type: "application/json" });
