@@ -40,10 +40,6 @@
   background-color: var(--accent-color);
   color: var(--accent-text-color);
 }
-/* Chromium only */
-::selection:window-inactive {
-  background-color: oklch(from var(--accent-color) l 0 0);
-}
 
 html,
 body,
