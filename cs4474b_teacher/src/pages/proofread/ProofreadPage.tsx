@@ -12,9 +12,7 @@ interface ProofReadPageProps {
 }
 
 function normalizeParagraphs(games: ProofreadGame[]): ProofreadGame[] {
-  const nonEmptyGames = games.filter(
-    (game) => game.answerText.trim() !== "" || game.errorCount > 0,
-  );
+  const nonEmptyGames = games.filter((game) => game.answerText.trim() !== "");
 
   return [...nonEmptyGames, { answerText: "", errorCount: 1 }];
 }
