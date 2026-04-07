@@ -14,6 +14,11 @@
 
   width: 320px;
 }
+.OverviewPage__error {
+  margin: 0;
+  color: var(--danger-color);
+  font-weight: bold;
+}
 
 .Metadata__field {
   display: flex;
@@ -26,4 +31,7 @@
   flex-direction: column;
 
   margin: 0 -16px;
+}
+.GameOverviews__link--invalid {
+  box-shadow: -5px 0px var(--danger-color);
 }

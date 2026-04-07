@@ -51,6 +51,13 @@
     --button-current-color: oklch(from var(--button-color) calc(l - 0.15) c h);
     --button-gradient-direction: to top;
   }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    --button-current-color: var(--button-color);
+    --button-gradient-direction: to bottom;
+  }
 }
 
 .Button--primary {

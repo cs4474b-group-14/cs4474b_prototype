@@ -29,3 +29,22 @@ export const NEW_GAME_SET: GameSet = {
   homophoneGames: [],
   prioritizedWords: [],
 };
+
+export const areProofreadGamesValid = (gameSet: GameSet): boolean => {
+  // This doesn't check for duplicates. Don't care right now
+  return gameSet.proofreadGames.every(
+    (game) => game.answerText.trim() !== "" && game.errorCount >= 1,
+  );
+};
+
+export const areHomophoneGamesValid = (gameSet: GameSet): boolean => {
+  // This doesn't check for duplicates. Don't care right now
+  return gameSet.homophoneGames.every(
+    (game) =>
+      game.words.filter((w) => w.trim() !== "").length >= 2 &&
+      game.exampleSentences.filter((s) => s.trim() !== "").length >= 1,
+  );
+};
+
+export const isGameSetValid = (gameSet: GameSet): boolean =>
+  areProofreadGamesValid(gameSet) && areHomophoneGamesValid(gameSet);

@@ -1,8 +1,15 @@
+import clsx from "clsx";
+
 import { ArrowLink } from "../../components/ArrowLink";
 import { Button } from "../../components/Button";
 import { BackButton, PageHeader } from "../../components/PageHeader";
 import { TextInput } from "../../components/TextInput";
-import type { GameSet } from "../../types/games";
+import {
+  areHomophoneGamesValid,
+  areProofreadGamesValid,
+  isGameSetValid,
+  type GameSet,
+} from "../../types/games";
 
 import "./OverviewPage.css";
 
@@ -35,11 +42,19 @@ function GameOverviews({ gameSet }: { gameSet: GameSet }) {
   return (
     <div className="GameOverviews">
       <ArrowLink
+        className={clsx(
+          "GameOverviews__link",
+          !areProofreadGamesValid(gameSet) && "GameOverviews__link--invalid",
+        )}
         title="Proofread"
         subtitle={`${gameSet.proofreadGames.length} paragraphs`}
         to="/edit/proofread"
       />
       <ArrowLink
+        className={clsx(
+          "GameOverviews__link",
+          !areHomophoneGamesValid(gameSet) && "GameOverviews__link--invalid",
+        )}
         title="Homophones"
         subtitle={`${gameSet.homophoneGames.length} homophone sets`}
         to="/edit/homophones"
@@ -78,6 +93,8 @@ export function OverviewPage({
     URL.revokeObjectURL(url);
   };
 
+  const isValid = isGameSetValid(gameSet);
+
   return (
     <div className="OverviewPage">
       {/* TODO: Add confirmation before closing game set */}
@@ -89,9 +106,19 @@ export function OverviewPage({
       <main className="OverviewPage__content">
         <Metadata gameSet={gameSet} onGameSetChange={onGameSetChange} />
         <GameOverviews gameSet={gameSet} />
-        <Button variant="primary" size="large" onClick={handleDownload}>
+        <Button
+          variant="primary"
+          size="large"
+          onClick={handleDownload}
+          disabled={!isValid}
+        >
           Download
         </Button>
+        {!isValid && (
+          <p className="OverviewPage__error">
+            Some games are invalid. Please fix the errors before downloading.
+          </p>
+        )}
       </main>
     </div>
   );
