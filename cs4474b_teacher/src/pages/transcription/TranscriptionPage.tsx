@@ -20,7 +20,7 @@ export function TranscriptionPage({
           {gameSet.name ?? "Back"}
         </BackButton>
       </PageHeader>
-      <div className="TranscriptionPage__content"></div>
+      <div className="TranscriptionPage__content">Not implemented</div>
     </div>
   );
 }

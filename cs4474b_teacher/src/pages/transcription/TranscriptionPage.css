@@ -1,9 +1,9 @@
-.OverviewPage {
+.TranscriptionPage {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.OverviewPage__content {
+.TranscriptionPage__content {
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -11,6 +11,4 @@
 
   gap: 32px;
   padding: 24px;
-
-  width: 320px;
 }
