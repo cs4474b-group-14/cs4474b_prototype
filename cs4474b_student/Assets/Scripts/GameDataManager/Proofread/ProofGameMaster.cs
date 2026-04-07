@@ -205,6 +205,6 @@ public class ProofGameMaster : MonoBehaviour
     public void mainMenu()
     {
         GameResult.proofreadComplete = true;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Dashboard");
     }
 }

@@ -130,7 +130,7 @@ public class UIManager : MonoBehaviour
     public void mainMenu()
     {
         GameResult.homophonesComplete = true;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Dashboard");
     }
     
     public void tryAgain()

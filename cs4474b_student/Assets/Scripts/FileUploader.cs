@@ -51,4 +51,8 @@ public class FileUploader : MonoBehaviour
     {
         SceneManager.LoadScene("Dashboard");
     }
+    public void closeApplication()
+    {
+        Application.Quit();
+    }
 }
