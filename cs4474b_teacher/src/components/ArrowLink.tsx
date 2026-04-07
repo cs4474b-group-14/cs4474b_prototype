@@ -10,8 +10,8 @@ export function ArrowLink({
   to: to,
 }: {
   className?: string;
-  title: string;
-  subtitle: string;
+  title: React.ReactNode;
+  subtitle: React.ReactNode;
   to: To;
 }) {
   return (

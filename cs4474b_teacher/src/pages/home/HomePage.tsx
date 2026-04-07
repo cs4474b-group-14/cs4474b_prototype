@@ -20,6 +20,17 @@ export function HomePage({
   const filePickerRef = React.useRef<HTMLInputElement | null>(null);
 
   const handleNew = () => {
+    const isConfirmed =
+      gameSet == null ||
+      confirm(
+        `Are you sure you want to create a new game set?\n\n` +
+          `This will close ${gameSet.name}, and everything that hasn't been ` +
+          `downloaded will be lost.`,
+      );
+    if (!isConfirmed) {
+      return;
+    }
+
     onGameSetChange(NEW_GAME_SET);
     navigate("/edit");
   };
@@ -53,7 +64,11 @@ export function HomePage({
           <ArrowLink
             className="HomePage__continue"
             title="Continue editing?"
-            subtitle={`When you left off, you were editing ${gameSet.name}`}
+            subtitle={
+              <>
+                When you left off, you were editing <em>{gameSet.name}</em>
+              </>
+            }
             to="/edit"
           />
         )}
