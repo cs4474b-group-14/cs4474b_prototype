@@ -145,10 +145,8 @@
 }
 
 .ProofReadPage__warning {
-  padding: 12px;
-  border: 1px solid #e0b4b4;
-  border-radius: 8px;
-  background: #fff5f5;
+  color: var(--danger-color);
+  font-weight: bold;
 }
 
 .ProofReadPage__warning p {

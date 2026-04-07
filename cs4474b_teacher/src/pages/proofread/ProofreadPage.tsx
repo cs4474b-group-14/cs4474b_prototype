@@ -191,7 +191,7 @@ export function ProofreadPage({
                       <input
                         className="ProofReadPage__input ProofReadPage__number-input"
                         type="number"
-                        min={0}
+                        min={1}
                         value={game.errorCount}
                         onChange={(e) =>
                           handleErrorCountChange(index, e.target.value)
@@ -206,7 +206,7 @@ export function ProofreadPage({
                         <div className="ProofReadPage__warning">
                           {!hasParagraph && <p>• Add a paragraph</p>}
                           {!hasValidErrorCount && (
-                            <p>• Error count must be at least 1</p>
+                            <p>• Number of errors must be at least 1</p>
                           )}
                           {duplicateError && <p>• {duplicateError}</p>}
                         </div>
