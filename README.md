@@ -30,6 +30,7 @@ To create a production build of the teacher app, open a terminal in the
 `cs4474b_teacher` directory and run:
 
 ```sh
+pnpm install
 pnpm run build
 ```
 
@@ -50,6 +51,7 @@ To run a live development server, open a terminal in the `cs4474b_teacher`
 directory and run:
 
 ```sh
+pnpm install
 pnpm run dev
 ```
 
