@@ -35,7 +35,9 @@ immediately after building.
 You can also run the game directly in the Unity editor. To do this:
 
  1. Open the `cs4474_student` directory as a Unity project.
- 2. Click the ▶ _Play_ button at the top of the screen.
+ 2. In the _Assets_ panel (usually at the bottom of the screen), open the
+    _Scenes_ folder, then double-click the _Menu_ scene to open it.
+ 3. Click the ▶ _Play_ button at the top of the screen.
 
 ## Teacher
 
