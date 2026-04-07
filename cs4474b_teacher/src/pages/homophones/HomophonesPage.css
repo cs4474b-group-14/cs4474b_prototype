@@ -1,9 +1,9 @@
-@import url('https://atkinsonforbraille.org/fonts/atkinson-hyperlegible-next/atkinson-hyperlegible-next.css');
+@import url("https://atkinsonforbraille.org/fonts/atkinson-hyperlegible-next/atkinson-hyperlegible-next.css");
 
 .HomophonesPage {
   background-color: #ffffff;
   color: #000000;
-  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,6 @@
   align-items: start;
 }
 
-
 .HomophoneCard {
   background: #fafafa;
   border: 1px solid #cccccc;
@@ -38,7 +37,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   overflow: hidden;
   height: auto;
 }
@@ -46,13 +47,13 @@
 /* TOTALLY EMPTY */
 
 .HomophoneCard.is-empty .HomophoneCard__indicator {
-  background-color: #a30013;
+  background-color: var(--danger-color);
 }
 
 /* PARTIALLY FILLED */
 
 .HomophoneCard.is-partial .HomophoneCard__indicator {
-  background-color: #b58900;
+  background-color: var(--danger-color);
 }
 
 .HomophoneCard__indicator {
@@ -87,9 +88,8 @@
 }
 
 .HomophoneCard__delete-btn:hover {
-  color: #a30013;
+  color: var(--danger-color);
 }
-
 
 .HomophoneCard__word-grid {
   display: grid;
@@ -112,8 +112,8 @@
   right: -8px;
   width: 20px;
   height: 20px;
-  background: #a30013;
-  color: #ffffff;
+  background: var(--danger-color);
+  color: var(--danger-text-color);
   border: none;
   border-radius: 50%;
   font-size: 12px;
@@ -123,7 +123,7 @@
   justify-content: center;
   opacity: 0;
   z-index: 10;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: opacity 0.2s;
 }
 
@@ -162,12 +162,6 @@
   transition: border-color 0.15s ease;
 }
 
-.HomophoneCard__textarea:focus {
-  border-color: #007fff;
-  border-width: 2px;
-  padding: 7px 9px;
-}
-
 /* ERRORS */
 .HomophoneCard__errors {
   margin-top: 12px;
@@ -176,7 +170,7 @@
 .HomophoneCard__error-text {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #a30013;
+  color: var(--danger-color);
   margin: 4px 0 0;
 }
 
@@ -194,9 +188,9 @@
 }
 
 .HomophonesPage__add-btn:hover:not(:disabled) {
-  border-color: #007fff;
-  color: #007fff;
-  background-color: #f7f9ff;
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background-color: color-mix(in oklch, var(--accent-color) 5%, white);
 }
 
 .HomophonesPage__add-btn:disabled {
